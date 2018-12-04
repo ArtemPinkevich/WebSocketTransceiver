@@ -101,6 +101,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Page Include="Connection\ConnectionView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Shell\MainView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -109,6 +113,10 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Connection\ConnectionView.xaml.cs">
+      <DependentUpon>ConnectionView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Connection\ConnectionViewModel.cs" />
     <Compile Include="Shell\MainView.xaml.cs">
       <DependentUpon>MainView.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -160,5 +168,16 @@
   <ItemGroup>
     <Resource Include="arrows.ico" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\NetworkInteraction\NetworkInteraction.csproj">
+      <Project>{0734727B-B2D1-473A-952C-C8A4C96F2877}</Project>
+      <Name>NetworkInteraction</Name>
+    </ProjectReference>
+    <ProjectReference Include="BusinessLogic\BusinessLogic.csproj">
+      <Project>{6299BA19-EC56-4304-8DC0-9862ACCA4DF4}</Project>
+      <Name>BusinessLogic</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

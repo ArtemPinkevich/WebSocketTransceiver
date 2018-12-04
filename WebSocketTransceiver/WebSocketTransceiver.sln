@@ -5,6 +5,10 @@ VisualStudioVersion = 15.0.27428.2027
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebSocketTransceiver", "WebSocketTransceiver.csproj", "{B7B07ADB-B11A-4DC1-A485-ACF9090EDD30}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NetworkInteraction", "..\NetworkInteraction\NetworkInteraction.csproj", "{0734727B-B2D1-473A-952C-C8A4C96F2877}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BusinessLogic", "BusinessLogic\BusinessLogic.csproj", "{6299BA19-EC56-4304-8DC0-9862ACCA4DF4}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +19,14 @@ Global
 		{B7B07ADB-B11A-4DC1-A485-ACF9090EDD30}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B7B07ADB-B11A-4DC1-A485-ACF9090EDD30}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B7B07ADB-B11A-4DC1-A485-ACF9090EDD30}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0734727B-B2D1-473A-952C-C8A4C96F2877}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0734727B-B2D1-473A-952C-C8A4C96F2877}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0734727B-B2D1-473A-952C-C8A4C96F2877}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0734727B-B2D1-473A-952C-C8A4C96F2877}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6299BA19-EC56-4304-8DC0-9862ACCA4DF4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6299BA19-EC56-4304-8DC0-9862ACCA4DF4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6299BA19-EC56-4304-8DC0-9862ACCA4DF4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6299BA19-EC56-4304-8DC0-9862ACCA4DF4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

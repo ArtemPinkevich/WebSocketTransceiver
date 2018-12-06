@@ -31,7 +31,7 @@
 
         public void SendMessage(string message)
         {
-            _wsServerService.SendMessage(message);
+            _wsServerService?.SendMessage(message);
         }
 
         private void AddWsServerService()
@@ -46,6 +46,7 @@
         {
             _wsServerService.OnClosed -= HandleWsServerServiceOnClosed;
             _wsServerService.OnMessageReceived -= HandleWsServerServiceOnMessageReceived;
+            _wsServerService = null;
         }
 
         private void HandleWsServerServiceOnMessageReceived(object sender, PackageReceivedEventArgs args)

@@ -7,6 +7,8 @@
                      xmlns:connection="clr-namespace:WebSocketTransceiver.Connection"
                      xmlns:shell="clr-namespace:WebSocketTransceiver.Shell"
                      xmlns:mvvm="http://prismlibrary.com/"
+                     xmlns:textEditor="clr-namespace:WebSocketTransceiver.TextEditor"
+                     xmlns:chat="clr-namespace:WebSocketTransceiver.Chat"
                      mvvm:ViewModelLocator.AutoWireViewModel="True"
                      mc:Ignorable="d"
                      Title="WebSocket Transceiver" Height="600" Width="800"
@@ -28,7 +30,9 @@
             </Grid.ColumnDefinitions>
 
             <GridSplitter Background="#1Affffff" Grid.Column="1" Width="4" HorizontalAlignment="Stretch" />
+            <textEditor:TextEditorView Grid.Column="2"/>
             <GridSplitter Background="#1Affffff" Grid.Column="3" Width="4" HorizontalAlignment="Stretch" />
+            <chat:ChatView Grid.Column="4"/>
 
         </Grid>
 

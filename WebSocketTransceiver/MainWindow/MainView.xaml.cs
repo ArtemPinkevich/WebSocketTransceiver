@@ -1,4 +1,4 @@
-﻿namespace WebSocketTransceiver.Shell
+﻿namespace WebSocketTransceiver.MainWindow
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml

@@ -1,18 +1,18 @@
-﻿<mahapps:MetroWindow x:Class="WebSocketTransceiver.Shell.MainView"
+﻿<mahapps:MetroWindow x:Class="WebSocketTransceiver.MainWindow.MainView"
                      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
                      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
                      xmlns:mahapps="http://metro.mahapps.com/winfx/xaml/controls"
-                     xmlns:connection="clr-namespace:WebSocketTransceiver.Connection"
-                     xmlns:shell="clr-namespace:WebSocketTransceiver.Shell"
-                     xmlns:mvvm="http://prismlibrary.com/"
+                     xmlns:prism="http://prismlibrary.com/"
                      xmlns:textEditor="clr-namespace:WebSocketTransceiver.TextEditor"
                      xmlns:chat="clr-namespace:WebSocketTransceiver.Chat"
-                     mvvm:ViewModelLocator.AutoWireViewModel="True"
+                     xmlns:constants="clr-namespace:Common.constants;assembly=Common"
+                     xmlns:mainWindow="clr-namespace:WebSocketTransceiver.MainWindow"
+                     prism:ViewModelLocator.AutoWireViewModel="True"
                      mc:Ignorable="d"
                      Title="WebSocket Transceiver" Height="600" Width="800"
-                     d:DataContext="{d:DesignInstance shell:MainViewModel}">
+                     d:DataContext="{d:DesignInstance mainWindow:MainViewModel}">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="*" />
@@ -36,24 +36,9 @@
 
         </Grid>
 
-        <Grid Grid.Row="1" Margin="4">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="Auto"/>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="Auto"/>
-            </Grid.ColumnDefinitions>
 
-            <StackPanel Grid.Column="0">
-                <TextBlock Text="Listening Interface"/>
-                <connection:ConnectionView DataContext="{Binding Path=ConnectionOpenerVm}"/>
-            </StackPanel>
-
-
-            <StackPanel Grid.Column="2">
-                <TextBlock Text="Server Interface"/>
-                <connection:ConnectionView DataContext="{Binding Path=ConnectionRequesterVm}"/>
-            </StackPanel>
-        </Grid>
+        <ContentControl  Grid.Row="1" Margin="4" prism:RegionManager.RegionName="{x:Static constants:RegionNames.CONNECTION_REGION}"/>
+        
     </Grid>
 </mahapps:MetroWindow>
     

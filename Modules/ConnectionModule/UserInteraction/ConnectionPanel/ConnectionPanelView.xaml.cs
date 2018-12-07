@@ -13,14 +13,14 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace WebSocketTransceiver.Connection
+namespace ConnectionModule.UserInteraction.ConnectionPanel
 {
     /// <summary>
-    /// Interaction logic for ConnectionView.xaml
+    /// Interaction logic for ConnectionPanelView.xaml
     /// </summary>
-    public partial class ConnectionView : UserControl
+    public partial class ConnectionPanelView : UserControl
     {
-        public ConnectionView()
+        public ConnectionPanelView()
         {
             InitializeComponent();
         }

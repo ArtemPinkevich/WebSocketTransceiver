@@ -3,11 +3,17 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27428.2027
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebSocketTransceiver", "WebSocketTransceiver.csproj", "{B7B07ADB-B11A-4DC1-A485-ACF9090EDD30}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebSocketTransceiver", "WebSocketTransceiver\WebSocketTransceiver.csproj", "{B7B07ADB-B11A-4DC1-A485-ACF9090EDD30}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NetworkInteraction", "..\NetworkInteraction\NetworkInteraction.csproj", "{0734727B-B2D1-473A-952C-C8A4C96F2877}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NetworkInteraction", "NetworkInteraction\NetworkInteraction.csproj", "{0734727B-B2D1-473A-952C-C8A4C96F2877}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BusinessLogic", "BusinessLogic\BusinessLogic.csproj", "{6299BA19-EC56-4304-8DC0-9862ACCA4DF4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConnectionModule", "Modules\ConnectionModule\ConnectionModule.csproj", "{4B350930-6FC7-4CA9-B08B-1F8D14DEF53C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Common", "Common\Common.csproj", "{FA2027F3-41B9-465E-AB80-98989281E31B}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Modules", "Modules", "{2B1452B1-AF81-44DF-B870-7CFD636C0FAB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,9 +33,20 @@ Global
 		{6299BA19-EC56-4304-8DC0-9862ACCA4DF4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6299BA19-EC56-4304-8DC0-9862ACCA4DF4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6299BA19-EC56-4304-8DC0-9862ACCA4DF4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4B350930-6FC7-4CA9-B08B-1F8D14DEF53C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4B350930-6FC7-4CA9-B08B-1F8D14DEF53C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4B350930-6FC7-4CA9-B08B-1F8D14DEF53C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4B350930-6FC7-4CA9-B08B-1F8D14DEF53C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FA2027F3-41B9-465E-AB80-98989281E31B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FA2027F3-41B9-465E-AB80-98989281E31B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FA2027F3-41B9-465E-AB80-98989281E31B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FA2027F3-41B9-465E-AB80-98989281E31B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{4B350930-6FC7-4CA9-B08B-1F8D14DEF53C} = {2B1452B1-AF81-44DF-B870-7CFD636C0FAB}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {C615892F-A73F-4AE0-B5A4-6859BCB60B18}

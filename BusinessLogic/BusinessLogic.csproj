@@ -43,22 +43,19 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Connection\ConnectionRequester.cs" />
-    <Compile Include="Connection\ConnectionOpener.cs" />
-    <Compile Include="Connection\IConnectionMaker.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Routing\AbonentType.cs" />
     <Compile Include="Routing\EventArgs\MessageReceivedEventArgs.cs" />
     <Compile Include="Routing\Router.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\NetworkInteraction\NetworkInteraction.csproj">
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\NetworkInteraction\NetworkInteraction.csproj">
       <Project>{0734727B-B2D1-473A-952C-C8A4C96F2877}</Project>
       <Name>NetworkInteraction</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

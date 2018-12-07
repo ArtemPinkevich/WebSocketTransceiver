@@ -1,4 +1,4 @@
-﻿namespace BusinessLogic.Connection
+﻿namespace ConnectionModule.BusinessLogic
 {
     using System;
 

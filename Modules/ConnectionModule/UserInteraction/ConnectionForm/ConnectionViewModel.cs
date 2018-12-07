@@ -1,14 +1,14 @@
-﻿namespace WebSocketTransceiver.Connection
+﻿namespace ConnectionModule.UserInteraction.ConnectionForm
 {
     using System;
     using System.Windows.Input;
 
-    using BusinessLogic.Connection;
+    using BusinessLogic;
 
     using Prism.Commands;
     using Prism.Mvvm;
 
-    class ConnectionViewModel : BindableBase
+    public class ConnectionViewModel : BindableBase
     {
         private readonly IConnectionMaker _connectionMaker;
         private string _ip = "192.168.36.18";

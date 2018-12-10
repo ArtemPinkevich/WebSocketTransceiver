@@ -2,6 +2,8 @@
 {
     using System;
 
+    using Common.Enums;
+
     using EventArgs;
 
     using NetworkInteraction;
@@ -17,12 +19,11 @@
         public Router(WsServer wsServer, WsClient wsClient)
         {
             _wsServer = wsServer;
-            _wsServer.OnMessageReceived += HandleWsServerOnMessageReceived;
-
-
             _wsClient = wsClient;
-            _wsClient.OnMessageReceived += HandleWsClientOnMessageReceived;
+
+            _wsServer.OnMessageReceived += HandleWsServerOnMessageReceived;
             _wsServer.OnClosed += HandleWsServerOnClosed;
+            _wsClient.OnMessageReceived += HandleWsClientOnMessageReceived;
         }
 
         private void HandleWsServerOnClosed(object sender, System.EventArgs eventArgs)

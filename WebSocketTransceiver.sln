@@ -15,6 +15,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Common", "Common\Common.csp
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Modules", "Modules", "{2B1452B1-AF81-44DF-B870-7CFD636C0FAB}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChatModule", "ChatModule\ChatModule.csproj", "{ADD5F789-97A6-4AAA-8350-AE2CF67D5688}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -41,12 +43,17 @@ Global
 		{FA2027F3-41B9-465E-AB80-98989281E31B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FA2027F3-41B9-465E-AB80-98989281E31B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FA2027F3-41B9-465E-AB80-98989281E31B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ADD5F789-97A6-4AAA-8350-AE2CF67D5688}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ADD5F789-97A6-4AAA-8350-AE2CF67D5688}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ADD5F789-97A6-4AAA-8350-AE2CF67D5688}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ADD5F789-97A6-4AAA-8350-AE2CF67D5688}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{4B350930-6FC7-4CA9-B08B-1F8D14DEF53C} = {2B1452B1-AF81-44DF-B870-7CFD636C0FAB}
+		{ADD5F789-97A6-4AAA-8350-AE2CF67D5688} = {2B1452B1-AF81-44DF-B870-7CFD636C0FAB}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {C615892F-A73F-4AE0-B5A4-6859BCB60B18}

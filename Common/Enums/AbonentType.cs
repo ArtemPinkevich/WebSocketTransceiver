@@ -1,4 +1,4 @@
-﻿namespace BusinessLogic.Routing
+﻿namespace Common.Enums
 {
     public enum AbonentType
     {

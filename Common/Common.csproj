@@ -47,6 +47,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Constants\RegionNames.cs" />
+    <Compile Include="Enums\AbonentType.cs" />
     <Compile Include="GlobalEvents\AppClosingEvent.cs" />
     <Compile Include="JsonHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

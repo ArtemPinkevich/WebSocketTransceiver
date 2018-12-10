@@ -8,7 +8,7 @@
     using Prism.Events;
     using Prism.Mvvm;
 
-    class MainViewModel : BindableBase
+    public class MainViewModel : BindableBase
     {
         private readonly IEventAggregator _eventAggregator;
 

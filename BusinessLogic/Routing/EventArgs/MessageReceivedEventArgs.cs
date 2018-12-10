@@ -1,5 +1,7 @@
 ﻿namespace BusinessLogic.Routing.EventArgs
 {
+    using Common.Enums;
+
     public class MessageReceivedEventArgs
     {
         public AbonentType Source { get; }

@@ -106,14 +106,6 @@
       <DependentUpon>TextEditorView.xaml</DependentUpon>
     </Compile>
     <Compile Include="TextEditor\TextEditorViewModel.cs" />
-    <Page Include="Chat\ChatItem\ChatItemView.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Chat\ChatView.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="MainWindow\MainView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -122,14 +114,6 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Chat\ChatItem\ChatItemView.xaml.cs">
-      <DependentUpon>ChatItemView.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Chat\ChatItem\ChatItemViewModel.cs" />
-    <Compile Include="Chat\ChatView.xaml.cs">
-      <DependentUpon>ChatView.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Chat\ChatViewModel.cs" />
     <Compile Include="MainWindow\MainView.xaml.cs">
       <DependentUpon>MainView.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -180,6 +164,10 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\ChatModule\ChatModule.csproj">
+      <Project>{ADD5F789-97A6-4AAA-8350-AE2CF67D5688}</Project>
+      <Name>ChatModule</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Modules\ConnectionModule\ConnectionModule.csproj">
       <Project>{4B350930-6FC7-4CA9-B08B-1F8D14DEF53C}</Project>
       <Name>ConnectionModule</Name>

@@ -4,6 +4,8 @@
 
     using BusinessLogic.Settings;
 
+    using ChatModule;
+
     using ConnectionModule;
 
     using MainWindow;
@@ -33,6 +35,7 @@
         protected override void ConfigureModuleCatalog(IModuleCatalog moduleCatalog)
         {
             moduleCatalog.AddModule<ConnectionModule>();
+            moduleCatalog.AddModule<ChatModule>();
         }
     }
 }

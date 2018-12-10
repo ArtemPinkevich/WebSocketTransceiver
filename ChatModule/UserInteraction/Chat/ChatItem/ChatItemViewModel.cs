@@ -1,10 +1,10 @@
-﻿namespace WebSocketTransceiver.Chat.ChatItem
+﻿namespace ChatModule.UserInteraction.Chat.ChatItem
 {
-    using BusinessLogic.Routing;
+    using Common.Enums;
 
     using Prism.Mvvm;
 
-    class ChatItemViewModel : BindableBase
+    public class ChatItemViewModel : BindableBase
     {
         public AbonentType Source { get; }
         public string Message { get; }

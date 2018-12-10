@@ -5,6 +5,8 @@ namespace WebSocketTransceiver.TextEditor
 
     using BusinessLogic.Routing;
 
+    using Common.Enums;
+
     using Prism.Commands;
     using Prism.Mvvm;
 

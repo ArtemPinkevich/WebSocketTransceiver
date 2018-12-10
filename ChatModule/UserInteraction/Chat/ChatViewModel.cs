@@ -1,4 +1,4 @@
-﻿namespace WebSocketTransceiver.Chat
+﻿namespace ChatModule.UserInteraction.Chat
 {
     using System.Collections.ObjectModel;
     using System.Windows;
@@ -8,11 +8,13 @@
 
     using ChatItem;
 
-    class ChatViewModel
+    using Common.Enums;
+
+    using Prism.Mvvm;
+
+    public class ChatViewModel : BindableBase
     {
         public ObservableCollection<ChatItemViewModel> Messages { get; } = new ObservableCollection<ChatItemViewModel>();
-
-
 
         public ChatViewModel(Router router)
         {

@@ -2,7 +2,9 @@
 {
     using BusinessLogic;
 
-    using Common.constants;
+    using Common.Constants;
+
+    using global::BusinessLogic.Settings;
 
     using Prism.Ioc;
     using Prism.Modularity;

@@ -72,6 +72,8 @@
     <Compile Include="BusinessLogic\IConnectionMaker.cs" />
     <Compile Include="ConnectionModule.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Settings\ConnectionSettings.cs" />
+    <Compile Include="Settings\ConnectionSettingsFileNames.cs" />
     <Compile Include="UserInteraction\ConnectionForm\ConnectionView.xaml.cs">
       <DependentUpon>ConnectionView.xaml</DependentUpon>
     </Compile>
@@ -92,6 +94,10 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\BusinessLogic\BusinessLogic.csproj">
+      <Project>{6299BA19-EC56-4304-8DC0-9862ACCA4DF4}</Project>
+      <Name>BusinessLogic</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\NetworkInteraction\NetworkInteraction.csproj">
       <Project>{0734727B-B2D1-473A-952C-C8A4C96F2877}</Project>
       <Name>NetworkInteraction</Name>

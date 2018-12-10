@@ -3,16 +3,24 @@
                      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
                      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                     xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
                      xmlns:mahapps="http://metro.mahapps.com/winfx/xaml/controls"
                      xmlns:prism="http://prismlibrary.com/"
                      xmlns:textEditor="clr-namespace:WebSocketTransceiver.TextEditor"
                      xmlns:chat="clr-namespace:WebSocketTransceiver.Chat"
-                     xmlns:constants="clr-namespace:Common.constants;assembly=Common"
                      xmlns:mainWindow="clr-namespace:WebSocketTransceiver.MainWindow"
+                     xmlns:constants="clr-namespace:Common.Constants;assembly=Common"
                      prism:ViewModelLocator.AutoWireViewModel="True"
                      mc:Ignorable="d"
                      Title="WebSocket Transceiver" Height="600" Width="800"
                      d:DataContext="{d:DesignInstance mainWindow:MainViewModel}">
+
+    <i:Interaction.Triggers>
+        <i:EventTrigger EventName="Closing">
+            <i:InvokeCommandAction Command="{Binding ExitCommand}"/>
+        </i:EventTrigger>
+    </i:Interaction.Triggers>
+
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="*" />

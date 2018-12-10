@@ -2,6 +2,8 @@
 {
     using System.Windows;
 
+    using BusinessLogic.Settings;
+
     using ConnectionModule;
 
     using MainWindow;
@@ -25,6 +27,7 @@
         {
             containerRegistry.RegisterSingleton<WsServer>();
             containerRegistry.RegisterSingleton<WsClient>();
+            containerRegistry.RegisterSingleton<ISettingsManager, SettingsManager>();
         }
 
         protected override void ConfigureModuleCatalog(IModuleCatalog moduleCatalog)

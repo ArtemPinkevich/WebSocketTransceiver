@@ -1,4 +1,4 @@
-﻿namespace Common.constants
+﻿namespace Common.Constants
 {
     public class RegionNames
     {

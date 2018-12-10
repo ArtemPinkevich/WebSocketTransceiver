@@ -30,6 +30,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Prism, Version=7.2.0.708, Culture=neutral, PublicKeyToken=40ee6c3a2184dc59, processorArchitecture=MSIL">
+      <HintPath>..\packages\Prism.Core.7.2.0.708-pre\lib\net45\Prism.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -47,11 +50,17 @@
     <Compile Include="Routing\AbonentType.cs" />
     <Compile Include="Routing\EventArgs\MessageReceivedEventArgs.cs" />
     <Compile Include="Routing\Router.cs" />
+    <Compile Include="Settings\ISettingsManager.cs" />
+    <Compile Include="Settings\SettingsManager.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Common\Common.csproj">
+      <Project>{FA2027F3-41B9-465E-AB80-98989281E31B}</Project>
+      <Name>Common</Name>
+    </ProjectReference>
     <ProjectReference Include="..\NetworkInteraction\NetworkInteraction.csproj">
       <Project>{0734727B-B2D1-473A-952C-C8A4C96F2877}</Project>
       <Name>NetworkInteraction</Name>

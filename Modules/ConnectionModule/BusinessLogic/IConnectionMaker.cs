@@ -2,12 +2,15 @@
 {
     using System;
 
+    using Settings;
+
     public interface IConnectionMaker
     {
         event EventHandler OnConnectionBroken;
         event EventHandler OnConnected;
 
-        void Connect(string ip, string port);
+        void Connect(ConnectionSettings connectionSettings);
         void Disconnect();
+        ConnectionSettings GetSettings();
     }
 }

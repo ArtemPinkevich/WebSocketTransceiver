@@ -1,6 +1,9 @@
 ﻿namespace ConnectionModule.UserInteraction.ConnectionForm
 {
     using System;
+    using System.Linq;
+    using System.Net;
+    using System.Net.Sockets;
     using System.Windows.Input;
 
     using BusinessLogic;
@@ -8,11 +11,14 @@
     using Prism.Commands;
     using Prism.Mvvm;
 
+    using Settings;
+
     public class ConnectionViewModel : BindableBase
     {
         private readonly IConnectionMaker _connectionMaker;
-        private string _ip = "192.168.36.18";
-        private string _port = "8192";
+        private ConnectionSettings _connectionSettings;
+        private string _ip;
+        private string _port;
         private bool _isConnected;
 
         public string Ip
@@ -41,6 +47,14 @@
             _connectionMaker.OnConnected += HandleConnectionMakerOnConnected;
             _connectionMaker.OnConnectionBroken += HandleConnectionMakerOnConnectionBroken;
             ConnectCommand = new DelegateCommand(ExecuteConnectCommand);
+            Init();
+        }
+
+        private void Init()
+        {
+            _connectionSettings = _connectionMaker.GetSettings();
+            _ip = _connectionSettings.Ip ?? Dns.GetHostAddresses(Dns.GetHostName()).First(address => address.AddressFamily == AddressFamily.InterNetwork).ToString();
+            _port = _connectionSettings.Port;
         }
 
         private void HandleConnectionMakerOnConnected(object sender, EventArgs eventArgs)
@@ -61,7 +75,9 @@
             }
             else
             {
-                _connectionMaker.Connect(_ip, _port);
+                _connectionSettings.Ip = _ip;
+                _connectionSettings.Port = _port;
+                _connectionMaker.Connect(_connectionSettings);
             }
         }
     }

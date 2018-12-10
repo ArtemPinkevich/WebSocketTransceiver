@@ -2,7 +2,11 @@
 {
     using System;
 
+    using global::BusinessLogic.Settings;
+
     using NetworkInteraction;
+
+    using Settings;
 
     public class ConnectionRequester : IConnectionMaker
     {
@@ -10,10 +14,12 @@
         public event EventHandler OnConnected;
 
         private readonly WsClient _wsClient;
+        private readonly ISettingsManager _settingsManager;
 
-        public ConnectionRequester(WsClient wsServer)
+        public ConnectionRequester(WsClient wsServer, ISettingsManager settingsManager)
         {
             _wsClient = wsServer;
+            _settingsManager = settingsManager;
             _wsClient.OnConnected += WsClientOnConnected;
             _wsClient.OnClosed += HandleWsClientOnClosed;
         }
@@ -28,14 +34,20 @@
             OnConnected?.Invoke(this, EventArgs.Empty);
         }
 
-        public void Connect(string ip, string port)
+        public void Connect(ConnectionSettings connectionSettings)
         {
-            _wsClient.Connect(ip, port);
+            _settingsManager.UpdateSettings(ConnectionSettingsFileNames.REQUESTING_CONNECTION, connectionSettings);
+            _wsClient.Connect(connectionSettings.Ip, connectionSettings.Port);
         }
 
         public void Disconnect()
         {
             _wsClient.Disconnect();
+        }
+
+        public ConnectionSettings GetSettings()
+        {
+            return _settingsManager.GetSettings<ConnectionSettings>(ConnectionSettingsFileNames.REQUESTING_CONNECTION);
         }
     }
 }

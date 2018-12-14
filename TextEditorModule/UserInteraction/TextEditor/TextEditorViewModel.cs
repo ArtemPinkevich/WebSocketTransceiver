@@ -1,5 +1,5 @@
 ﻿
-namespace WebSocketTransceiver.TextEditor
+namespace TextEditorModule.UserInteraction.TextEditor
 {
     using System.Windows.Input;
 

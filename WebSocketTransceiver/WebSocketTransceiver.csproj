@@ -102,10 +102,6 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="TextEditor\TextEditorView.xaml.cs">
-      <DependentUpon>TextEditorView.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="TextEditor\TextEditorViewModel.cs" />
     <Page Include="MainWindow\MainView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -118,10 +114,6 @@
       <DependentUpon>MainView.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="TextEditor\TextEditorView.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="MainWindow\MainViewModel.cs" />
@@ -183,6 +175,10 @@
     <ProjectReference Include="..\Common\Common.csproj">
       <Project>{FA2027F3-41B9-465E-AB80-98989281E31B}</Project>
       <Name>Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TextEditorModule\TextEditorModule.csproj">
+      <Project>{322F1CBD-4A2A-4B4C-8FD6-43D9BD2420C4}</Project>
+      <Name>TextEditorModule</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup />

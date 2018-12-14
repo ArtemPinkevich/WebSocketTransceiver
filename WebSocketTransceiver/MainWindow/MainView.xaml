@@ -6,7 +6,6 @@
                      xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
                      xmlns:mahapps="http://metro.mahapps.com/winfx/xaml/controls"
                      xmlns:prism="http://prismlibrary.com/"
-                     xmlns:textEditor="clr-namespace:WebSocketTransceiver.TextEditor"
                      xmlns:mainWindow="clr-namespace:WebSocketTransceiver.MainWindow"
                      xmlns:constants="clr-namespace:Common.Constants;assembly=Common"
                      prism:ViewModelLocator.AutoWireViewModel="True"
@@ -37,7 +36,7 @@
             </Grid.ColumnDefinitions>
 
             <GridSplitter Background="#1Affffff" Grid.Column="1" Width="4" HorizontalAlignment="Stretch" />
-            <textEditor:TextEditorView Grid.Column="2"/>
+            <ContentControl Grid.Column="2" prism:RegionManager.RegionName="{x:Static constants:RegionNames.TEXT_EDITOR_REGION}"/>
             <GridSplitter Background="#1Affffff" Grid.Column="3" Width="4" HorizontalAlignment="Stretch" />
             <ContentControl Grid.Column="4" prism:RegionManager.RegionName="{x:Static constants:RegionNames.CHAT_REGION}"/>
 

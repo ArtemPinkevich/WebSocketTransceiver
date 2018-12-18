@@ -19,6 +19,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChatModule", "ChatModule\Ch
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TextEditorModule", "TextEditorModule\TextEditorModule.csproj", "{322F1CBD-4A2A-4B4C-8FD6-43D9BD2420C4}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Styles", "Styles\Styles.csproj", "{3B2A0350-9403-4E92-986F-8B335655A975}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -53,6 +55,10 @@ Global
 		{322F1CBD-4A2A-4B4C-8FD6-43D9BD2420C4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{322F1CBD-4A2A-4B4C-8FD6-43D9BD2420C4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{322F1CBD-4A2A-4B4C-8FD6-43D9BD2420C4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3B2A0350-9403-4E92-986F-8B335655A975}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3B2A0350-9403-4E92-986F-8B335655A975}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3B2A0350-9403-4E92-986F-8B335655A975}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3B2A0350-9403-4E92-986F-8B335655A975}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

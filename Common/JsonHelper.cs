@@ -4,6 +4,7 @@
     using System.IO;
 
     using Newtonsoft.Json;
+    using Newtonsoft.Json.Linq;
 
     public static class JsonHelper
     {
@@ -49,6 +50,53 @@
                     throw;
 #endif
                 }
+            }
+        }
+
+        public static bool IsValidJson(string strInput)
+        {
+            if (string.IsNullOrEmpty(strInput))
+            {
+                return false;
+            }
+
+            strInput = strInput.Trim();
+            if (strInput.StartsWith("{") && strInput.EndsWith("}") ||   // For object
+                strInput.StartsWith("[") && strInput.EndsWith("]"))     // For array
+            {
+                try
+                {
+                    JToken obj = JToken.Parse(strInput);
+                    return true;
+                }
+                catch (JsonReaderException jex)
+                {
+                    //Exception in parsing json
+                    Console.WriteLine(jex.Message);
+                    return false;
+                }
+                catch (Exception ex) //some other exception
+                {
+                    Console.WriteLine(ex.ToString());
+                    return false;
+                }
+            }
+
+            return false;
+        }
+
+        public static string RestructJson(string strInput)
+        {
+            try
+            {
+                object parsedJson = JsonConvert.DeserializeObject(strInput);
+                string fixedJson = JsonConvert.SerializeObject(parsedJson, Formatting.Indented);
+                return fixedJson;
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                return strInput;
             }
         }
     }

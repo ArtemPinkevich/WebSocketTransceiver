@@ -4,16 +4,55 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mvvm="http://prismlibrary.com/"
+             xmlns:textEditor="clr-namespace:TextEditorModule.UserInteraction.TextEditor"
+             xmlns:converters="clr-namespace:Common.Converters;assembly=Common"
+             xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
              mvvm:ViewModelLocator.AutoWireViewModel="True"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800"
-             d:DataContext="{d:DesignInstance local:TextEditorViewModel}">
+             d:DataContext="{d:DesignInstance textEditor:TextEditorViewModel}">
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <converters:EnumToCollectionConverter x:Key="EnumToCollectionConverter" />
+            <converters:EnumToDescriptionConverter x:Key="EnumToDescriptionConverter" />
+        
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/Styles;component/Styles/TextBox.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </UserControl.Resources>
+    
     <Grid>
         <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
-        <TextBox Grid.Row="0" TextWrapping="Wrap" AcceptsReturn="True" AcceptsTab="True" Text="{Binding Path=Text}"/>
-        <Button Grid.Row="1" Content="Send" Command="{Binding Path=SendCommand}"/>
+        <StackPanel Grid.Row="0" Orientation="Horizontal">
+            <Button Content="Format" Command="{Binding Path=FormatCommand}"/>
+        </StackPanel>
+
+        <TextBox Grid.Row="1" Style="{StaticResource JsonEditorTextBox}" Text="{Binding Path=Text, UpdateSourceTrigger=PropertyChanged, Delay=1000}">
+            <i:Interaction.Triggers>
+                <i:EventTrigger EventName="LostFocus">
+                    <i:InvokeCommandAction Command="{Binding FormatCommand}" />
+                </i:EventTrigger>
+            </i:Interaction.Triggers>
+        </TextBox>
+
+        <Grid Grid.Row="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+
+            <TextBlock Grid.Column="0" Text="Target:" Margin="8,0,8,0" VerticalAlignment="Center"/>
+            <ComboBox  Grid.Column="1"
+                       ItemsSource="{Binding Path=Target, Converter={StaticResource EnumToCollectionConverter}}"
+                       SelectedItem="{Binding Path=Target, Mode=TwoWay, Converter={StaticResource EnumToDescriptionConverter}}"/>
+            <Button Grid.Column="3" Width="200" Content="Send" Command="{Binding Path=SendCommand}"/>
+        </Grid>
     </Grid>
 </UserControl>

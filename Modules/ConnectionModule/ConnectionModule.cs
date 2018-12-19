@@ -4,8 +4,7 @@
 
     using Common.Constants;
 
-    using global::BusinessLogic.Settings;
-
+    using Prism.Events;
     using Prism.Ioc;
     using Prism.Modularity;
     using Prism.Regions;
@@ -45,8 +44,12 @@
                 new ContainerControlledLifetimeManager(),
                 new InjectionConstructor(container.Resolve<IConnectionMaker>("ConnectionRequester")));
 
-            container.RegisterType<ConnectionPanelViewModel>(new ContainerControlledLifetimeManager(),
-                new InjectionConstructor(container.Resolve<ConnectionViewModel>("ConnectionOpenerVm"), container.Resolve<ConnectionViewModel>("ConnectionRequesterVm")));
+            container.RegisterType<ConnectionPanelViewModel>(
+                new ContainerControlledLifetimeManager(),
+                new InjectionConstructor(
+                    container.Resolve<ConnectionViewModel>("ConnectionOpenerVm"),
+                    container.Resolve<ConnectionViewModel>("ConnectionRequesterVm"),
+                    container.Resolve<IEventAggregator>()));
         }
     }
 }

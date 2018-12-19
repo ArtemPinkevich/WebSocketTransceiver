@@ -21,7 +21,9 @@
             <TextBlock Text="Listening Interface"/>
             <connectionForm:ConnectionView DataContext="{Binding Path=ConnectionOpenerVm}"/>
         </StackPanel>
-        
+
+        <CheckBox Grid.Column="1" Content="Repeater Mode" VerticalAlignment="Bottom" HorizontalAlignment="Center" IsChecked="{Binding Path=IsRepeaterModeEnabled}" Command="{Binding Path=SwitchRepeaterModeCommand}"/>
+
         <StackPanel Grid.Column="2">
             <TextBlock Text="Server Interface"/>
             <connectionForm:ConnectionView DataContext="{Binding Path=ConnectionRequesterVm}"/>

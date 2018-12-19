@@ -53,6 +53,7 @@
     <Compile Include="Enums\AbonentType.cs" />
     <Compile Include="Extensions\EnumExtension.cs" />
     <Compile Include="GlobalEvents\AppClosingEvent.cs" />
+    <Compile Include="GlobalEvents\SwitchRepeaterModeEvent.cs" />
     <Compile Include="JsonHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

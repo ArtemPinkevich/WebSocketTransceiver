@@ -3,20 +3,23 @@
     using System;
 
     using Common.Enums;
+    using Common.GlobalEvents;
 
     using EventArgs;
 
     using NetworkInteraction;
 
+    using Prism.Events;
+
     public class Router
     {
         private readonly WsClient _wsClient;
         private readonly WsServer _wsServer;
-        private bool _enableRepeaterMode = true;
+        private bool _enableRepeaterMode;
 
         public event EventHandler<MessageReceivedEventArgs> OnMessageReceived;
 
-        public Router(WsServer wsServer, WsClient wsClient)
+        public Router(WsServer wsServer, WsClient wsClient, IEventAggregator eventAggregator)
         {
             _wsServer = wsServer;
             _wsClient = wsClient;
@@ -24,6 +27,9 @@
             _wsServer.OnMessageReceived += HandleWsServerOnMessageReceived;
             _wsServer.OnClosed += HandleWsServerOnClosed;
             _wsClient.OnMessageReceived += HandleWsClientOnMessageReceived;
+
+
+            eventAggregator.GetEvent<SwitchRepeaterModeEvent>().Subscribe(HandleSwitchRepeaterModeEvent);
         }
 
         private void HandleWsServerOnClosed(object sender, System.EventArgs eventArgs)
@@ -48,6 +54,11 @@
                     throw new ArgumentOutOfRangeException(nameof(target), target, null);
             }
             
+        }
+
+        private void HandleSwitchRepeaterModeEvent(bool isEnabled)
+        {
+            _enableRepeaterMode = isEnabled;
         }
 
         private void HandleWsServerOnMessageReceived(object sender, PackageReceivedEventArgs args)

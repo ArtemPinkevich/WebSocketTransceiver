@@ -32,12 +32,12 @@
             <Button Content="Format" Command="{Binding Path=FormatCommand}"/>
         </StackPanel>
 
-        <TextBox Grid.Row="1" Style="{StaticResource JsonEditorTextBox}" Text="{Binding Path=Text, UpdateSourceTrigger=PropertyChanged, Delay=1000}">
-            <i:Interaction.Triggers>
+        <TextBox Grid.Row="1" Style="{StaticResource JsonEditorTextBox}" Text="{Binding Path=Text, UpdateSourceTrigger=PropertyChanged, Delay=500}">
+            <!--<i:Interaction.Triggers>
                 <i:EventTrigger EventName="LostFocus">
                     <i:InvokeCommandAction Command="{Binding FormatCommand}" />
                 </i:EventTrigger>
-            </i:Interaction.Triggers>
+            </i:Interaction.Triggers>-->
         </TextBox>
 
         <Grid Grid.Row="2">

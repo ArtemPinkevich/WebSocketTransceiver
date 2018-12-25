@@ -1,0 +1,83 @@
+﻿namespace PackagesStorageModule.UserInteraction.PackagesPanel
+{
+    using System.Collections.Generic;
+    using System.Collections.ObjectModel;
+    using System.Linq;
+    using System.Windows.Input;
+
+    using Common.GlobalEvents.Packages;
+
+    using Data;
+
+    using PackagesExplorerItem;
+
+    using Prism.Commands;
+    using Prism.Events;
+    using Prism.Mvvm;
+
+    class PackagesPanelViewModel : BindableBase
+    {
+        private readonly IEventAggregator _eventAggregator;
+        private PackagesExplorerItemViewModel _selectedPackage;
+
+        public ObservableCollection<PackagesExplorerItemViewModel> Packages { get; } = new ObservableCollection<PackagesExplorerItemViewModel>();
+
+        public PackagesExplorerItemViewModel SelectedPackage
+        {
+            get => _selectedPackage;
+            set => SetProperty(ref _selectedPackage, value);
+        }
+
+        public ICommand SelectedCommand => new DelegateCommand(ExecuteSelectedCommand);
+
+        public PackagesPanelViewModel(IEventAggregator eventAggregator)
+        {
+            _eventAggregator = eventAggregator;
+            _eventAggregator.GetEvent<GetPackagesResponse>().Subscribe(HandleGetPackagesResponse);
+            _eventAggregator.GetEvent<PackageAddedEvent>().Subscribe(HandlePackageAddedEvent);
+            _eventAggregator.GetEvent<PackageEditedEvent>().Subscribe(HandlePackageEditedEvent);
+            _eventAggregator.GetEvent<PackageRemovedEvent>().Subscribe(HandlePackageRemovedEvent);
+            Init();
+        }
+
+        private void Init()
+        {
+            _eventAggregator.GetEvent<GetPackagesRequest>().Publish();
+        }
+
+        private void ExecuteSelectedCommand()
+        {
+            if (SelectedPackage != null)
+            {
+                _eventAggregator.GetEvent<ShowPackageInEditorRequest>().Publish(SelectedPackage.GetPackage());
+            }
+        }
+
+        private void HandleGetPackagesResponse(List<Package> packages)
+        {
+            Packages.AddRange(packages.Select(o => new PackagesExplorerItemViewModel(o, _eventAggregator)));
+        }
+
+        private void HandlePackageRemovedEvent(Package package)
+        {
+            PackagesExplorerItemViewModel packageVm = Packages.FirstOrDefault(o => o.GetPackage().Name == package.Name);
+            Packages.Remove(packageVm);
+            if (SelectedPackage == null)
+            {
+                SelectedPackage = Packages.FirstOrDefault();
+            }
+        }
+
+        private void HandlePackageAddedEvent(Package package)
+        {
+            var packageVm = new PackagesExplorerItemViewModel(package, _eventAggregator);
+            Packages.Add(packageVm);
+            SelectedPackage = packageVm;
+        }
+
+        private void HandlePackageEditedEvent(Package package)
+        {
+            Packages.FirstOrDefault(o => o.GetPackage().Name == package.Name)?.Refresh(package);
+        }
+    }
+}

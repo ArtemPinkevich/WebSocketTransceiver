@@ -75,7 +75,7 @@
 
         public void Disconnect()
         {
-            _webSocket.CloseAsync();
+            _webSocket?.CloseAsync();
         }
 
         #endregion

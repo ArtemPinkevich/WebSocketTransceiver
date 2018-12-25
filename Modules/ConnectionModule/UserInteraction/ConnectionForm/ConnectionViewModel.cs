@@ -39,14 +39,13 @@
             set => SetProperty(ref _isConnected, value);
         }
 
-        public ICommand ConnectCommand { get; }
+        public ICommand ConnectCommand => new DelegateCommand(ExecuteConnectCommand);
 
         public ConnectionViewModel(IConnectionMaker connectionMaker)
         {
             _connectionMaker = connectionMaker;
             _connectionMaker.OnConnected += HandleConnectionMakerOnConnected;
             _connectionMaker.OnConnectionBroken += HandleConnectionMakerOnConnectionBroken;
-            ConnectCommand = new DelegateCommand(ExecuteConnectCommand);
             Init();
         }
 

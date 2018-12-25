@@ -35,6 +35,7 @@
                 <ColumnDefinition Width="2*"/>
             </Grid.ColumnDefinitions>
 
+            <ContentControl Grid.Column="0" prism:RegionManager.RegionName="{x:Static constants:RegionNames.PACKAGES_EXPLORER_REGION}"/>
             <GridSplitter Background="#1Affffff" Grid.Column="1" Width="4" HorizontalAlignment="Stretch" />
             <ContentControl Grid.Column="2" prism:RegionManager.RegionName="{x:Static constants:RegionNames.TEXT_EDITOR_REGION}"/>
             <GridSplitter Background="#1Affffff" Grid.Column="3" Width="4" HorizontalAlignment="Stretch" />
@@ -44,7 +45,7 @@
 
 
         <ContentControl  Grid.Row="1" Margin="4" prism:RegionManager.RegionName="{x:Static constants:RegionNames.CONNECTION_REGION}"/>
-        
+
     </Grid>
 </mahapps:MetroWindow>
     

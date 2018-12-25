@@ -82,6 +82,10 @@
       <Project>{FA2027F3-41B9-465E-AB80-98989281E31B}</Project>
       <Name>Common</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Data\Data.csproj">
+      <Project>{ACC987F2-41FA-44AA-9F03-846C4F433D97}</Project>
+      <Name>Data</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Styles\Styles.csproj">
       <Project>{3b2a0350-9403-4e92-986f-8b335655a975}</Project>
       <Name>Styles</Name>

@@ -24,14 +24,13 @@
             set => SetProperty(ref _isRepeaterModeEnabled, value);
         }
 
-        public ICommand SwitchRepeaterModeCommand { get; }
+        public ICommand SwitchRepeaterModeCommand => new DelegateCommand(ExecuteSwitchRepeaterModeCommand);
 
         public ConnectionPanelViewModel(ConnectionViewModel connectionOpenerVm, ConnectionViewModel connectionRequesterVm, IEventAggregator eventAggregator)
         {
             ConnectionOpenerVm = connectionOpenerVm;
             ConnectionRequesterVm = connectionRequesterVm;
             _eventAggregator = eventAggregator;
-            SwitchRepeaterModeCommand = new DelegateCommand(ExecuteSwitchRepeaterModeCommand);
         }
 
         private void ExecuteSwitchRepeaterModeCommand()

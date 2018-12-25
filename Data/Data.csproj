@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{FA2027F3-41B9-465E-AB80-98989281E31B}</ProjectGuid>
+    <ProjectGuid>{ACC987F2-41FA-44AA-9F03-846C4F433D97}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Common</RootNamespace>
-    <AssemblyName>Common</AssemblyName>
+    <RootNamespace>Data</RootNamespace>
+    <AssemblyName>Data</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -30,13 +30,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <HintPath>..\packages\Newtonsoft.Json.12.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
-    </Reference>
-    <Reference Include="PresentationFramework" />
-    <Reference Include="Prism, Version=7.2.0.708, Culture=neutral, PublicKeyToken=40ee6c3a2184dc59, processorArchitecture=MSIL">
-      <HintPath>..\packages\Prism.Core.7.2.0.708-pre\lib\net45\Prism.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -47,31 +40,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Constants\RegionNames.cs" />
-    <Compile Include="Converters\EnumToCollectionConverter.cs" />
-    <Compile Include="Converters\EnumToDescriptionConverter.cs" />
-    <Compile Include="Enums\AbonentType.cs" />
-    <Compile Include="Extensions\EnumExtension.cs" />
-    <Compile Include="GlobalEvents\AppClosingEvent.cs" />
-    <Compile Include="GlobalEvents\Packages\GetPackagesRequest.cs" />
-    <Compile Include="GlobalEvents\Packages\GetPackagesResponse.cs" />
-    <Compile Include="GlobalEvents\Packages\PackageAddedEvent.cs" />
-    <Compile Include="GlobalEvents\Packages\PackageEditedEvent.cs" />
-    <Compile Include="GlobalEvents\Packages\PackageRemovedEvent.cs" />
-    <Compile Include="GlobalEvents\Packages\RemovePackageRequest.cs" />
-    <Compile Include="GlobalEvents\Packages\ShowPackageInEditorRequest.cs" />
-    <Compile Include="GlobalEvents\SwitchRepeaterModeEvent.cs" />
-    <Compile Include="JsonHelper.cs" />
+    <Compile Include="Package.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Data\Data.csproj">
-      <Project>{ACC987F2-41FA-44AA-9F03-846C4F433D97}</Project>
-      <Name>Data</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

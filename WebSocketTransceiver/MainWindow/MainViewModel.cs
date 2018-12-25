@@ -12,12 +12,11 @@
     {
         private readonly IEventAggregator _eventAggregator;
 
-        public ICommand ExitCommand { get; }
+        public ICommand ExitCommand => new DelegateCommand(ExecuteExitCommand);
 
         public MainViewModel(IEventAggregator eventAggregator)
         {
             _eventAggregator = eventAggregator;
-            ExitCommand = new DelegateCommand(ExecuteExitCommand);
         }
 
         private void ExecuteExitCommand()

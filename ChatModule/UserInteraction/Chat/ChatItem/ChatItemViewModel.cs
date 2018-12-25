@@ -14,6 +14,5 @@
             Source = source;
             Message = message;
         }
-
     }
 }

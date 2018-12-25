@@ -68,6 +68,13 @@
             }
         }
 
+        public void Save<T>(string fileName, T settings)
+        {
+            // TODO improve!!
+            UpdateSettings(fileName, settings);
+            JsonHelper.SafeSaveToFile(FOLDER_NAME, fileName, settings);
+        }
+
         private void HandleOnAppClosing()
         {
             Save();

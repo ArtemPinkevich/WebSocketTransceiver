@@ -4,6 +4,7 @@
 
     using Common.Enums;
     using Common.GlobalEvents;
+    using Common.GlobalEvents.Packages;
 
     using EventArgs;
 
@@ -16,6 +17,7 @@
         private readonly WsClient _wsClient;
         private readonly WsServer _wsServer;
         private bool _enableRepeaterMode;
+        private AbonentType _target = AbonentType.Server;
 
         public event EventHandler<MessageReceivedEventArgs> OnMessageReceived;
 
@@ -30,6 +32,7 @@
 
 
             eventAggregator.GetEvent<SwitchRepeaterModeEvent>().Subscribe(HandleSwitchRepeaterModeEvent);
+            eventAggregator.GetEvent<SendPackageRequest>().Subscribe(HandleSendPackageRequest);
         }
 
         private void HandleWsServerOnClosed(object sender, System.EventArgs eventArgs)
@@ -40,7 +43,17 @@
             }
         }
 
-        public void Send(AbonentType target, string message)
+        public void Send(string message)
+        {
+            Send(_target, message);
+        }
+
+        public void SetTarget(AbonentType target)
+        {
+            _target = target;
+        }
+
+        private void Send(AbonentType target, string message)
         {
             switch (target)
             {
@@ -53,12 +66,16 @@
                 default:
                     throw new ArgumentOutOfRangeException(nameof(target), target, null);
             }
-            
         }
 
         private void HandleSwitchRepeaterModeEvent(bool isEnabled)
         {
             _enableRepeaterMode = isEnabled;
+        }
+
+        private void HandleSendPackageRequest(string message)
+        {
+            Send(message);
         }
 
         private void HandleWsServerOnMessageReceived(object sender, PackageReceivedEventArgs args)

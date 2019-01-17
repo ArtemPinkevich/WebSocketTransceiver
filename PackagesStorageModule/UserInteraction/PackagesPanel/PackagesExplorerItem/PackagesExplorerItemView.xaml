@@ -20,9 +20,11 @@
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="Auto"/>
         </Grid.ColumnDefinitions>
-        
+
         <TextBlock Grid.Column="0" Text="{Binding Path=Name}" VerticalAlignment="Center"/>
-        <Button Grid.Column="1" Content="X" Command="{Binding Path=RemoveCommand}" Style="{StaticResource HoverButtonStyle}"/>
+        <Button Grid.Column="1" Content="send" Command="{Binding Path=SendCommand}" Style="{StaticResource HoverButtonStyle}"/>
+        <Button Grid.Column="2" Content="X" Command="{Binding Path=RemoveCommand}" Style="{StaticResource HoverButtonStyle}"/>
     </Grid>
 </UserControl>

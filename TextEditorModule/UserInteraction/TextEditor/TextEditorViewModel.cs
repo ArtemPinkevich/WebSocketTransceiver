@@ -25,7 +25,7 @@
         private string _text;
         private Package _package = new Package();
         private string _packageName = string.Empty;
-        private PackagesManager _packagesManager;
+        private readonly PackagesManager _packagesManager;
         private readonly IEventAggregator _eventAggregator;
 
         #endregion
@@ -60,6 +60,7 @@
             set => SetProperty(ref _isTextValid, value);
         }
 
+        public ICommand TargetChangedCommand => new DelegateCommand(ExecuteTargetChangedCommand);
         public ICommand SendCommand => new DelegateCommand(ExecuteSendCommand);
         public ICommand FormatCommand => new DelegateCommand(ExecuteFormatCommand);
         public ICommand SaveCommand => new DelegateCommand(ExecuteSaveCommand);
@@ -99,9 +100,14 @@
             FormatText();
         }
 
+        private void ExecuteTargetChangedCommand()
+        {
+            _router.SetTarget(_target);
+        }
+
         private void ExecuteSendCommand()
         {
-            _router.Send(Target, _text);
+            _router.Send(_text);
         }
 
         private void Refresh(Package package)

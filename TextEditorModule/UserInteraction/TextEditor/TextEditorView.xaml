@@ -55,8 +55,14 @@
             <TextBlock Grid.Column="0" Text="Target:" Margin="8,0,8,0" VerticalAlignment="Center"/>
             <ComboBox  Grid.Column="1"
                        ItemsSource="{Binding Path=Target, Converter={StaticResource EnumToCollectionConverter}}"
-                       SelectedItem="{Binding Path=Target, Mode=TwoWay, Converter={StaticResource EnumToDescriptionConverter}}"/>
-            <Button Grid.Column="3" Width="200" Content="Send" Command="{Binding Path=SendCommand}"/>
+                       SelectedItem="{Binding Path=Target, Mode=TwoWay, Converter={StaticResource EnumToDescriptionConverter}}">
+                <i:Interaction.Triggers>
+                    <i:EventTrigger EventName="SelectionChanged">
+                        <i:InvokeCommandAction Command="{Binding Path=TargetChangedCommand}"/>
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>
+            </ComboBox>
+                <Button Grid.Column="3" Width="200" Content="Send" Command="{Binding Path=SendCommand}"/>
         </Grid>
     </Grid>
 </UserControl>

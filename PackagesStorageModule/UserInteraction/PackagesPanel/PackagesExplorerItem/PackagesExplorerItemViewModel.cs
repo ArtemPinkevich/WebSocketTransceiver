@@ -23,6 +23,7 @@
         }
 
         public ICommand RemoveCommand => new DelegateCommand(ExecuteRemoveCommand);
+        public ICommand SendCommand => new DelegateCommand(ExecuteSendCommand);
 
         public PackagesExplorerItemViewModel(Package package, IEventAggregator eventAggregator)
         {
@@ -45,6 +46,11 @@
         private void ExecuteRemoveCommand()
         {
             _eventAggregator.GetEvent<RemovePackageRequest>().Publish(_package.Name);
+        }
+
+        private void ExecuteSendCommand()
+        {
+            _eventAggregator.GetEvent<SendPackageRequest>().Publish(_package.JsonContent);
         }
     }
 }

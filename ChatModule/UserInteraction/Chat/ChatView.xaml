@@ -10,14 +10,20 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800"
              d:DataContext="{d:DesignInstance chat:ChatViewModel}">
-    <StackPanel>
-        <TextBlock>Chat</TextBlock>
-        <ListBox ItemsSource="{Binding Path=Messages}">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <TextBlock Grid.Row="0" HorizontalAlignment="Center">Chat</TextBlock>
+        <Button Grid.Row="1" Command="{Binding Path=ClearCommand}" Content="Clear"/>
+        <ListBox Grid.Row="2" ItemsSource="{Binding Path=Messages}">
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <chatItem:ChatItemView/>
                 </DataTemplate>
             </ListBox.ItemTemplate>
         </ListBox>
-    </StackPanel>
+    </Grid>
 </UserControl>

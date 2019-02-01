@@ -86,12 +86,13 @@
             return false;
         }
 
-        public static string RestructJson(string strInput)
+        public static string RestructJson(string strInput, bool isFormattingIndented = true)
         {
             try
             {
                 object parsedJson = JsonConvert.DeserializeObject(strInput);
-                string fixedJson = JsonConvert.SerializeObject(parsedJson, Formatting.Indented);
+                Formatting formatting = isFormattingIndented ? Formatting.Indented : Formatting.None;
+                string fixedJson = JsonConvert.SerializeObject(parsedJson, formatting);
                 return fixedJson;
             }
             catch (Exception e)

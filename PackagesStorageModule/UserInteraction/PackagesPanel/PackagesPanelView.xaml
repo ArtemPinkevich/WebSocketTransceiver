@@ -22,7 +22,7 @@
 
         <importExport:ImportExportPackagesView Grid.Row="1"/>
         
-        <ListBox Grid.Row="2" ItemsSource="{Binding Path=Packages}" SelectedItem="{Binding Path=SelectedPackage}">
+        <ListBox Grid.Row="2" ItemsSource="{Binding Path=Packages}" SelectedItem="{Binding Path=SelectedPackage}" Margin="0,0,8,0">
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <packagesExplorerItem:PackagesExplorerItemView/>

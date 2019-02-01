@@ -27,6 +27,9 @@
     {
         protected override Window CreateShell()
         {
+            // Заставляем PackagesManager работать
+            Container.Resolve<PackagesManager>();
+
             return Container.Resolve<MainView>();
         }
 

@@ -29,21 +29,14 @@
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
 
-        <Grid Grid.Row="0">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="Auto"/>
-            </Grid.ColumnDefinitions>
-            <Button Grid.Column="1" Content="Format" Command="{Binding Path=FormatCommand}" ToolTip="Causes child objects to be indented according to the json format"/>
-
-            <TextBox Grid.Column="0" MaxLength="50" Text="{Binding Path=PackageName}">
-                <i:Interaction.Triggers>
-                    <i:EventTrigger EventName="LostFocus">
-                        <i:InvokeCommandAction Command="{Binding Path=SaveCommand}"/>
-                    </i:EventTrigger>
-                </i:Interaction.Triggers>
-            </TextBox>
-        </Grid>
+        <TextBox Grid.Row="0" MaxLength="50" Text="{Binding Path=PackageName}" BorderThickness="0">
+            <i:Interaction.Triggers>
+                <i:EventTrigger EventName="LostFocus">
+                    <i:InvokeCommandAction Command="{Binding Path=SaveCommand}"/>
+                </i:EventTrigger>
+            </i:Interaction.Triggers>
+        </TextBox>
+        
         <ScrollViewer Grid.Row="1">
             <TextBox Style="{StaticResource JsonEditorTextBox}" Text="{Binding Path=Text, UpdateSourceTrigger=PropertyChanged, Delay=500}">
                 <i:Interaction.Triggers>

@@ -2,7 +2,6 @@
 {
     using System.Windows.Input;
 
-    using BusinessLogic.Packages;
     using BusinessLogic.Routing;
 
     using Common;
@@ -25,7 +24,6 @@
         private string _text;
         private Package _package = new Package("");
         private string _packageName = string.Empty;
-        private readonly PackagesManager _packagesManager;
         private readonly IEventAggregator _eventAggregator;
 
         #endregion
@@ -62,17 +60,15 @@
 
         public ICommand TargetChangedCommand => new DelegateCommand(ExecuteTargetChangedCommand);
         public ICommand SendCommand => new DelegateCommand(ExecuteSendCommand);
-        public ICommand FormatCommand => new DelegateCommand(ExecuteFormatCommand);
         public ICommand SaveCommand => new DelegateCommand(ExecuteSaveCommand);
 
         #endregion
 
         #region Constructors
 
-        public TextEditorViewModel(Router router, PackagesManager packagesManager, IEventAggregator eventAggregator)
+        public TextEditorViewModel(Router router, IEventAggregator eventAggregator)
         {
             _router = router;
-            _packagesManager = packagesManager;
             _eventAggregator = eventAggregator;
             _eventAggregator.GetEvent<ShowPackageInEditorRequest>().Subscribe(HandleShowPackageInEditorRequest);
         }
@@ -94,12 +90,6 @@
             }
         }
 
-        private void ExecuteFormatCommand()
-        {
-            CheckTextForJsonValid();
-            FormatText();
-        }
-
         private void ExecuteTargetChangedCommand()
         {
             _router.SetTarget(_target);
@@ -107,7 +97,7 @@
 
         private void ExecuteSendCommand()
         {
-            _router.Send(_text);
+            _eventAggregator.GetEvent<SendPackageRequest>().Publish(new SendPackageRequestArgs(_target, _text));
         }
 
         private void Refresh(Package package)
@@ -115,14 +105,16 @@
             _package = package;
             PackageName = _package.Name;
             Text = _package.JsonContent;
+            FormatText();
         }
 
         private void ExecuteSaveCommand()
         {
+            FormatText();
+
             _package.Name = PackageName;
             _package.JsonContent = Text;
             _eventAggregator.GetEvent<PackageEditedEvent>().Publish(_package);
-            //_packagesManager.SavePackage(_package);
         }
 
         private void HandleShowPackageInEditorRequest(Package package)

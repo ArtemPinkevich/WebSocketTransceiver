@@ -78,7 +78,12 @@
 
         private void HandlePackageEditedEvent(Package package)
         {
-            Packages.FirstOrDefault(o => o.GetPackage().Guid == package.Guid)?.Refresh(package);
+            PackagesExplorerItemViewModel packageVm = Packages.FirstOrDefault(o => o.GetPackage().Guid == package.Guid);
+            if (packageVm != null)
+            {
+                packageVm.Refresh(package);
+                SelectedPackage = packageVm;
+            }
         }
     }
 }

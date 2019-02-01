@@ -12,22 +12,26 @@
     using Common.Enums;
 
     using Prism.Commands;
+    using Prism.Events;
     using Prism.Mvvm;
 
     public class ChatViewModel : BindableBase
     {
+        private readonly IEventAggregator _eventAggregator;
+
         public ObservableCollection<ChatItemViewModel> Messages { get; } = new ObservableCollection<ChatItemViewModel>();
 
         public ICommand ClearCommand => new DelegateCommand(ExecuteClearCommand);
 
-        public ChatViewModel(Router router)
+        public ChatViewModel(Router router, IEventAggregator eventAggregator)
         {
+            _eventAggregator = eventAggregator;
             router.OnMessageReceived += HandleRouterOnMessageReceived;
         }
 
         private void AddMessage(AbonentType source, string message)
         {
-            Messages.Add(new ChatItemViewModel(source, message));
+            Messages.Add(new ChatItemViewModel(source, message, _eventAggregator));
         }
 
         private void ExecuteClearCommand()

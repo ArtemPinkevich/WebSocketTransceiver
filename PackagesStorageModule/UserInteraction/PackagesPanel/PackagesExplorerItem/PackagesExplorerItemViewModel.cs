@@ -50,7 +50,7 @@
 
         private void ExecuteSendCommand()
         {
-            _eventAggregator.GetEvent<SendPackageRequest>().Publish(_package.JsonContent);
+            _eventAggregator.GetEvent<SendPackageRequest>().Publish(new SendPackageRequestArgs(null, _package.JsonContent));
         }
     }
 }

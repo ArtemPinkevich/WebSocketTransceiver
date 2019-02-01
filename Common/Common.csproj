@@ -63,6 +63,8 @@
     <Compile Include="GlobalEvents\Packages\PackageRemovedEvent.cs" />
     <Compile Include="GlobalEvents\Packages\RemovePackageRequest.cs" />
     <Compile Include="GlobalEvents\Packages\SendPackageRequest.cs" />
+    <Compile Include="GlobalEvents\Packages\SendPackageRequestArgs.cs" />
+    <Compile Include="GlobalEvents\Packages\ShowPackageFromChat.cs" />
     <Compile Include="GlobalEvents\Packages\ShowPackageInEditorRequest.cs" />
     <Compile Include="GlobalEvents\SwitchRepeaterModeEvent.cs" />
     <Compile Include="JsonHelper.cs" />

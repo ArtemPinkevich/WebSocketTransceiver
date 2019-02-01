@@ -43,11 +43,6 @@
             }
         }
 
-        public void Send(string message)
-        {
-            Send(_target, message);
-        }
-
         public void SetTarget(AbonentType target)
         {
             _target = target;
@@ -73,9 +68,10 @@
             _enableRepeaterMode = isEnabled;
         }
 
-        private void HandleSendPackageRequest(string message)
+        private void HandleSendPackageRequest(SendPackageRequestArgs args)
         {
-            Send(message);
+            AbonentType target = args.Target ?? _target;
+            Send(target, args.Message);
         }
 
         private void HandleWsServerOnMessageReceived(object sender, PackageReceivedEventArgs args)

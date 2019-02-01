@@ -3,6 +3,7 @@
     public enum AbonentType
     {
         Client,
-        Server
+        Server,
+        WebSocketTransceiver
     }
 }

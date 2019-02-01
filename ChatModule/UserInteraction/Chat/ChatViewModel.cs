@@ -1,15 +1,12 @@
 ﻿namespace ChatModule.UserInteraction.Chat
 {
     using System.Collections.ObjectModel;
-    using System.Windows;
     using System.Windows.Input;
-
-    using BusinessLogic.Routing;
-    using BusinessLogic.Routing.EventArgs;
 
     using ChatItem;
 
     using Common.Enums;
+    using Common.GlobalEvents.Packages;
 
     using Prism.Commands;
     using Prism.Events;
@@ -23,15 +20,15 @@
 
         public ICommand ClearCommand => new DelegateCommand(ExecuteClearCommand);
 
-        public ChatViewModel(Router router, IEventAggregator eventAggregator)
+        public ChatViewModel(IEventAggregator eventAggregator)
         {
             _eventAggregator = eventAggregator;
-            router.OnMessageReceived += HandleRouterOnMessageReceived;
+            _eventAggregator.GetEvent<PackageTransmittedEvent>().Subscribe(HandlePackageTransmittedEvent, ThreadOption.UIThread);
         }
 
-        private void AddMessage(AbonentType source, string message)
+        private void AddMessage(AbonentType source, AbonentType target, string message)
         {
-            Messages.Add(new ChatItemViewModel(source, message, _eventAggregator));
+            Messages.Add(new ChatItemViewModel(source, target, message, _eventAggregator));
         }
 
         private void ExecuteClearCommand()
@@ -39,9 +36,9 @@
             Messages.Clear();
         }
 
-        private void HandleRouterOnMessageReceived(object sender, MessageReceivedEventArgs args)
+        private void HandlePackageTransmittedEvent(PackageTransmittedArgs args)
         {
-            Application.Current.Dispatcher.Invoke(() => AddMessage(args.Source, args.JsonString));
+            AddMessage(args.Source, args.Target, args.Message);
         }
     }
 }

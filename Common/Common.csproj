@@ -57,6 +57,8 @@
     <Compile Include="GlobalEvents\Packages\ExportPackagesRequest.cs" />
     <Compile Include="GlobalEvents\Packages\GetPackagesRequest.cs" />
     <Compile Include="GlobalEvents\Packages\ImportPackagesRequest.cs" />
+    <Compile Include="GlobalEvents\Packages\PackageTransmittedArgs.cs" />
+    <Compile Include="GlobalEvents\Packages\PackageTransmittedEvent.cs" />
     <Compile Include="GlobalEvents\Packages\PackagesListRefreshed.cs" />
     <Compile Include="GlobalEvents\Packages\PackageAddedEvent.cs" />
     <Compile Include="GlobalEvents\Packages\PackageEditedEvent.cs" />

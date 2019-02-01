@@ -31,6 +31,20 @@
                     <DataTrigger Binding="{Binding Path=Source}" Value="{x:Static enums:AbonentType.Server}">
                         <Setter Property="Padding" Value="32,0,0,0"/>
                     </DataTrigger>
+                    <MultiDataTrigger>
+                            <MultiDataTrigger.Conditions>
+                                <Condition Binding="{Binding Path=Source}" Value="{x:Static enums:AbonentType.WebSocketTransceiver}"/>
+                                <Condition Binding="{Binding Path=Target}" Value="{x:Static enums:AbonentType.Client}"/>
+                        </MultiDataTrigger.Conditions>
+                        <Setter Property="Padding" Value="32,0,0,0"/>
+                    </MultiDataTrigger>
+                        <MultiDataTrigger>
+                            <MultiDataTrigger.Conditions>
+                                <Condition Binding="{Binding Path=Source}" Value="{x:Static enums:AbonentType.WebSocketTransceiver}"/>
+                                <Condition Binding="{Binding Path=Target}" Value="{x:Static enums:AbonentType.Server}"/>
+                        </MultiDataTrigger.Conditions>
+                            <Setter Property="Padding" Value="0,0,32,0"/>
+                    </MultiDataTrigger>
                 </Style.Triggers>
             </Style>
         </Border.Style>
@@ -48,6 +62,20 @@
                         <DataTrigger Binding="{Binding Path=Source}" Value="{x:Static enums:AbonentType.Server}">
                             <Setter Property="Background" Value="#edb537"/>
                         </DataTrigger>
+                        <MultiDataTrigger>
+                            <MultiDataTrigger.Conditions>
+                                <Condition Binding="{Binding Path=Source}" Value="{x:Static enums:AbonentType.WebSocketTransceiver}"/>
+                                <Condition Binding="{Binding Path=Target}" Value="{x:Static enums:AbonentType.Client}"/>
+                            </MultiDataTrigger.Conditions>
+                            <Setter Property="Background" Value="#66edb537"/>
+                        </MultiDataTrigger>
+                        <MultiDataTrigger>
+                            <MultiDataTrigger.Conditions>
+                                <Condition Binding="{Binding Path=Source}" Value="{x:Static enums:AbonentType.WebSocketTransceiver}"/>
+                                <Condition Binding="{Binding Path=Target}" Value="{x:Static enums:AbonentType.Server}"/>
+                            </MultiDataTrigger.Conditions>
+                            <Setter Property="Background" Value="#661c71c1"/>
+                        </MultiDataTrigger>
                     </Style.Triggers>
                 </Style>
             </Grid.Style>

@@ -16,6 +16,7 @@
         private string _message;
         private bool _isExpanded;
         public AbonentType Source { get; }
+        public AbonentType Target { get; }
 
         public string Message
         {
@@ -35,11 +36,13 @@
         public ICommand ShowInEditorCommand => new DelegateCommand(ExecuteShowInEditorCommand);
         public ICommand SendCommand => new DelegateCommand(ExecuteSendCommand);
 
-        public ChatItemViewModel(AbonentType source, string message, IEventAggregator eventAggregator)
+        public ChatItemViewModel(AbonentType source, AbonentType target, string message, IEventAggregator eventAggregator)
         {
-            Source = source;
-            Message = message;
             _eventAggregator = eventAggregator;
+            Source = source;
+            Target = target;
+            IsExpanded = false;
+            Message = JsonHelper.RestructJson(message, IsExpanded);
         }
 
         private void ExecuteExpandCommand()

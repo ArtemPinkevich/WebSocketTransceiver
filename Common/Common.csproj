@@ -54,6 +54,7 @@
     <Compile Include="Extensions\EnumExtension.cs" />
     <Compile Include="GlobalEvents\AppClosingEvent.cs" />
     <Compile Include="GlobalEvents\Packages\AddNewPackageRequest.cs" />
+    <Compile Include="GlobalEvents\Packages\AddPackagesFromFileRequest.cs" />
     <Compile Include="GlobalEvents\Packages\ExportPackagesRequest.cs" />
     <Compile Include="GlobalEvents\Packages\GetPackagesRequest.cs" />
     <Compile Include="GlobalEvents\Packages\ImportPackagesRequest.cs" />

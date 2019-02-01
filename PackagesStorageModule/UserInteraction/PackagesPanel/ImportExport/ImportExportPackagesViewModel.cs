@@ -1,6 +1,5 @@
 ﻿namespace PackagesStorageModule.UserInteraction.PackagesPanel.ImportExport
 {
-    using System;
     using System.Windows.Input;
 
     using Common.GlobalEvents.Packages;
@@ -11,8 +10,6 @@
     using Prism.Events;
     using Prism.Mvvm;
 
-    using Properties;
-
     class ImportExportPackagesViewModel : BindableBase
     {
         private readonly IEventAggregator _eventAggregator;
@@ -20,14 +17,14 @@
         public ICommand ImportCommand => new DelegateCommand(ExecuteImportCommand);
         public ICommand ExportCommand => new DelegateCommand(ExecuteExportCommand);
         public ICommand AddCommand => new DelegateCommand(ExecuteAddCommand);
+        public ICommand AddFromFileCommand => new DelegateCommand(ExecuteAddFromFileCommand);
 
         public ImportExportPackagesViewModel(IEventAggregator eventAggregator)
         {
             _eventAggregator = eventAggregator;
         }
 
-
-        private void ExecuteImportCommand()
+        private string ChooseFile()
         {
             var openFileDialog = new OpenFileDialog
             {
@@ -36,10 +33,13 @@
                 Title = "Selection of packages set"
             };
 
-            if (openFileDialog.ShowDialog() == true)
-            {
-                _eventAggregator.GetEvent<ImportPackagesRequest>().Publish(openFileDialog.FileName);
-            }
+            return openFileDialog.ShowDialog() == true ? openFileDialog.FileName : string.Empty;
+        }
+
+        private void ExecuteImportCommand()
+        {
+            string fileName = ChooseFile();
+            _eventAggregator.GetEvent<ImportPackagesRequest>().Publish(fileName);
         }
 
         private void ExecuteExportCommand()
@@ -57,6 +57,13 @@
                 _eventAggregator.GetEvent<ExportPackagesRequest>().Publish(saveFileDialog.FileName);
             }
         }
+
+        private void ExecuteAddFromFileCommand()
+        {
+            string fileName = ChooseFile();
+            _eventAggregator.GetEvent<AddPackagesFromFileRequest>().Publish(fileName);
+        }
+
         private void ExecuteAddCommand()
         {
             _eventAggregator.GetEvent<AddNewPackageRequest>().Publish();

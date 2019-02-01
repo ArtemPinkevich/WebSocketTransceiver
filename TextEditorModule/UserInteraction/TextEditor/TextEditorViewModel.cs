@@ -23,7 +23,7 @@
         private readonly Router _router;
         private AbonentType _target = AbonentType.Server;
         private string _text;
-        private Package _package = new Package();
+        private Package _package = new Package("");
         private string _packageName = string.Empty;
         private readonly PackagesManager _packagesManager;
         private readonly IEventAggregator _eventAggregator;
@@ -119,7 +119,10 @@
 
         private void ExecuteSaveCommand()
         {
-            _packagesManager.SavePackage(PackageName, Text);
+            _package.Name = PackageName;
+            _package.JsonContent = Text;
+            _eventAggregator.GetEvent<PackageEditedEvent>().Publish(_package);
+            //_packagesManager.SavePackage(_package);
         }
 
         private void HandleShowPackageInEditorRequest(Package package)

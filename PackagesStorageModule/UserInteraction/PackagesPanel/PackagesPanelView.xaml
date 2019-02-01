@@ -7,13 +7,22 @@
              xmlns:packagesPanel="clr-namespace:PackagesStorageModule.UserInteraction.PackagesPanel"
              xmlns:mvvm="http://prismlibrary.com/"
              xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+             xmlns:importExport="clr-namespace:PackagesStorageModule.UserInteraction.PackagesPanel.ImportExport"
              mvvm:ViewModelLocator.AutoWireViewModel="True"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800"
              d:DataContext="{d:DesignInstance packagesPanel:PackagesPanelViewModel}">
-    <StackPanel>
-        <TextBlock Margin="8">Packages Explorer</TextBlock>
-        <ListBox ItemsSource="{Binding Path=Packages}" SelectedItem="{Binding Path=SelectedPackage}">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <TextBlock Grid.Row="0" Margin="8" HorizontalAlignment="Center">Packages Explorer</TextBlock>
+
+        <importExport:ImportExportPackagesView Grid.Row="1"/>
+        
+        <ListBox Grid.Row="2" ItemsSource="{Binding Path=Packages}" SelectedItem="{Binding Path=SelectedPackage}">
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <packagesExplorerItem:PackagesExplorerItemView/>
@@ -25,5 +34,5 @@
                 </i:EventTrigger>
             </i:Interaction.Triggers>
         </ListBox>
-    </StackPanel>
+    </Grid>
 </UserControl>

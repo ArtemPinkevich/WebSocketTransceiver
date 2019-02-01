@@ -60,11 +60,20 @@
     <Reference Include="PresentationFramework" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Settings\PackagesSettings.cs" />
+    <Compile Include="UserInteraction\PackagesPanel\ImportExport\ImportExportPackagesView.xaml.cs">
+      <DependentUpon>ImportExportPackagesView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserInteraction\PackagesPanel\ImportExport\ImportExportPackagesViewModel.cs" />
     <Compile Include="UserInteraction\PackagesPanel\PackagesExplorerItem\PackagesExplorerItemView.xaml.cs">
       <DependentUpon>PackagesExplorerItemView.xaml</DependentUpon>
     </Compile>
     <Compile Include="UserInteraction\PackagesPanel\PackagesExplorerItem\PackagesExplorerItemViewModel.cs" />
     <Compile Include="UserInteraction\PackagesPanel\PackagesPanelViewModel.cs" />
+    <Page Include="UserInteraction\PackagesPanel\ImportExport\ImportExportPackagesView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="UserInteraction\PackagesPanel\PackagesExplorerItem\PackagesExplorerItemView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

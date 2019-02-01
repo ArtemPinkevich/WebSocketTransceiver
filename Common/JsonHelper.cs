@@ -29,20 +29,21 @@
             return new T();
         }
 
-        public static void SafeSaveToFile<T>(string folderName, string shortFileName, T settingsObject)
+        public static void SafeSaveToFile<T>(string fileName, T settingsObject)
         {
-            if (!Directory.Exists(folderName))
+            string fullpath = Path.GetFullPath(fileName);
+            string folderName = Path.GetDirectoryName(fullpath);
+
+            if (!string.IsNullOrEmpty(folderName) && !Directory.Exists(folderName))
             {
                 Directory.CreateDirectory(folderName);
             }
-
-            string fullFileName = $"{folderName}\\{shortFileName}";
 
             if (settingsObject != null)
             {
                 try
                 {
-                    File.WriteAllText(fullFileName, JsonConvert.SerializeObject(settingsObject, Formatting.Indented));
+                    File.WriteAllText(fullpath, JsonConvert.SerializeObject(settingsObject, Formatting.Indented));
                 }
                 catch (Exception e)
                 {

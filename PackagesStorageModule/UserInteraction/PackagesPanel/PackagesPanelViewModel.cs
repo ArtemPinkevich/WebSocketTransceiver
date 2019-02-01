@@ -33,7 +33,7 @@
         public PackagesPanelViewModel(IEventAggregator eventAggregator)
         {
             _eventAggregator = eventAggregator;
-            _eventAggregator.GetEvent<GetPackagesResponse>().Subscribe(HandleGetPackagesResponse);
+            _eventAggregator.GetEvent<PackagesListRefreshed>().Subscribe(HandlePackagesListRefreshed);
             _eventAggregator.GetEvent<PackageAddedEvent>().Subscribe(HandlePackageAddedEvent);
             _eventAggregator.GetEvent<PackageEditedEvent>().Subscribe(HandlePackageEditedEvent);
             _eventAggregator.GetEvent<PackageRemovedEvent>().Subscribe(HandlePackageRemovedEvent);
@@ -53,8 +53,9 @@
             }
         }
 
-        private void HandleGetPackagesResponse(List<Package> packages)
+        private void HandlePackagesListRefreshed(List<Package> packages)
         {
+            Packages.Clear();
             Packages.AddRange(packages.Select(o => new PackagesExplorerItemViewModel(o, _eventAggregator)));
         }
 
@@ -77,7 +78,7 @@
 
         private void HandlePackageEditedEvent(Package package)
         {
-            Packages.FirstOrDefault(o => o.GetPackage().Name == package.Name)?.Refresh(package);
+            Packages.FirstOrDefault(o => o.GetPackage().Guid == package.Guid)?.Refresh(package);
         }
     }
 }

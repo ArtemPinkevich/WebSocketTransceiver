@@ -53,8 +53,11 @@
     <Compile Include="Enums\AbonentType.cs" />
     <Compile Include="Extensions\EnumExtension.cs" />
     <Compile Include="GlobalEvents\AppClosingEvent.cs" />
+    <Compile Include="GlobalEvents\Packages\AddNewPackageRequest.cs" />
+    <Compile Include="GlobalEvents\Packages\ExportPackagesRequest.cs" />
     <Compile Include="GlobalEvents\Packages\GetPackagesRequest.cs" />
-    <Compile Include="GlobalEvents\Packages\GetPackagesResponse.cs" />
+    <Compile Include="GlobalEvents\Packages\ImportPackagesRequest.cs" />
+    <Compile Include="GlobalEvents\Packages\PackagesListRefreshed.cs" />
     <Compile Include="GlobalEvents\Packages\PackageAddedEvent.cs" />
     <Compile Include="GlobalEvents\Packages\PackageEditedEvent.cs" />
     <Compile Include="GlobalEvents\Packages\PackageRemovedEvent.cs" />

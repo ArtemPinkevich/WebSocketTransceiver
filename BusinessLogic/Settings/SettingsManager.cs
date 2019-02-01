@@ -9,12 +9,6 @@
 
     public class SettingsManager : ISettingsManager
     {
-        #region Constants
-
-        private const string FOLDER_NAME = "settings";
-
-        #endregion
-
         #region Fields
 
         private readonly Dictionary<string, object> _settins = new Dictionary<string, object>();
@@ -35,10 +29,10 @@
         /// <summary>
         ///     Returns settings object from file if it is not found in memory
         /// </summary>
-        public T GetSettings<T>(string fileName)
+        public T GetSettings<T>(string fileName, bool fromMemoryIfExist = true)
             where T : new()
         {
-            if (_settins.TryGetValue(fileName, out var settingsObject))
+            if (fromMemoryIfExist && _settins.TryGetValue(fileName, out var settingsObject))
             {
                 if (settingsObject is T)
                 {
@@ -46,9 +40,9 @@
                 }
             }
 
-            var settings = JsonHelper.SafeReadFromFile<T>($"{FOLDER_NAME}/{fileName}");
+            var settings = JsonHelper.SafeReadFromFile<T>(fileName);
 
-            _settins.Add(fileName, settings);
+            UpdateSettings(fileName, settings);
 
             return settings;
         }
@@ -72,7 +66,7 @@
         {
             // TODO improve!!
             UpdateSettings(fileName, settings);
-            JsonHelper.SafeSaveToFile(FOLDER_NAME, fileName, settings);
+            JsonHelper.SafeSaveToFile(fileName, settings);
         }
 
         private void HandleOnAppClosing()
@@ -83,7 +77,7 @@
         private void Save()
         {
             foreach (KeyValuePair<string, object> item in _settins)
-                JsonHelper.SafeSaveToFile(FOLDER_NAME, item.Key, item.Value);
+                JsonHelper.SafeSaveToFile(item.Key, item.Value);
         }
 
         #endregion

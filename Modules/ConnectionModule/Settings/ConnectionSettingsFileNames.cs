@@ -2,7 +2,7 @@
 {
     public class ConnectionSettingsFileNames
     {
-        public const string LISTENING_CONNECTION = "LISTENING_CONNECTION";
-        public const string REQUESTING_CONNECTION = "REQUESTING_CONNECTION";
+        public const string LISTENING_CONNECTION = "settings\\Listening_connections.json";
+        public const string REQUESTING_CONNECTION = "settings\\Requesting_connections.json";
     }
 }

@@ -56,10 +56,12 @@
     <Compile Include="GlobalEvents\Packages\AddNewPackageRequest.cs" />
     <Compile Include="GlobalEvents\Packages\AddPackagesFromFileRequest.cs" />
     <Compile Include="GlobalEvents\Packages\ExportPackagesRequest.cs" />
+    <Compile Include="GlobalEvents\Packages\GetPackagesFileNameRequest.cs" />
     <Compile Include="GlobalEvents\Packages\GetPackagesRequest.cs" />
     <Compile Include="GlobalEvents\Packages\ImportPackagesRequest.cs" />
     <Compile Include="GlobalEvents\Packages\PackageMoveRequest.cs" />
     <Compile Include="GlobalEvents\Packages\PackageMoveRequestArgs.cs" />
+    <Compile Include="GlobalEvents\Packages\PackagesFileNameRefreshedEvent.cs" />
     <Compile Include="GlobalEvents\Packages\PackageTransmittedArgs.cs" />
     <Compile Include="GlobalEvents\Packages\PackageTransmittedEvent.cs" />
     <Compile Include="GlobalEvents\Packages\PackagesListRefreshed.cs" />

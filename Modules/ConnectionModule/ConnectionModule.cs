@@ -4,7 +4,6 @@
 
     using Common.Constants;
 
-    using Prism.Events;
     using Prism.Ioc;
     using Prism.Modularity;
     using Prism.Regions;
@@ -17,7 +16,6 @@
     using Unity;
     using Unity.Injection;
     using Unity.Lifetime;
-
 
     public class ConnectionModule : IModule
     {
@@ -48,8 +46,7 @@
                 new ContainerControlledLifetimeManager(),
                 new InjectionConstructor(
                     container.Resolve<ConnectionViewModel>("ConnectionOpenerVm"),
-                    container.Resolve<ConnectionViewModel>("ConnectionRequesterVm"),
-                    container.Resolve<IEventAggregator>()));
+                    container.Resolve<ConnectionViewModel>("ConnectionRequesterVm")));
         }
     }
 }

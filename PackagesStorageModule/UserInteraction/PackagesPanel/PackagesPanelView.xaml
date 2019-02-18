@@ -16,14 +16,12 @@
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-        <TextBlock Grid.Row="0" Margin="8" HorizontalAlignment="Center">Packages Explorer</TextBlock>
+        
+        <importExport:ImportExportPackagesView Grid.Row="0"/>
 
-        <importExport:ImportExportPackagesView Grid.Row="1"/>
-
-        <ListBox Grid.Row="2" ItemsSource="{Binding Path=Packages}" SelectedItem="{Binding Path=SelectedPackage}" Margin="0,0,8,0" dd:DragDrop.IsDragSource="True" dd:DragDrop.IsDropTarget="True" dd:DragDrop.DropHandler="{Binding}">
+        <ListBox Grid.Row="1" ItemsSource="{Binding Path=Packages}" SelectedItem="{Binding Path=SelectedPackage}" Margin="0,0,8,0" dd:DragDrop.IsDragSource="True" dd:DragDrop.IsDropTarget="True" dd:DragDrop.DropHandler="{Binding}">
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <packagesExplorerItem:PackagesExplorerItemView/>

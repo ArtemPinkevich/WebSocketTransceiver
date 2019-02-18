@@ -12,15 +12,22 @@
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="Auto"/>
-            <ColumnDefinition Width="Auto"/>
             <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="Auto"/>
             <ColumnDefinition Width="Auto"/>
         </Grid.ColumnDefinitions>
 
         <Button Grid.Column="0" Content="Add" ToolTip="Add New" Command="{Binding Path=AddCommand}"/>
-        <Button Grid.Column="1" Content="[Add]" ToolTip="Add from file" Command="{Binding Path=AddFromFileCommand}"/>
-        <Button Grid.Column="3" Content="Import" Command="{Binding Path=ImportCommand}"/>
-        <Button Grid.Column="4" Content="Export" Command="{Binding Path=ExportCommand}"/>
+
+        <Border Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="4,0">
+            <TextBlock Text="{Binding Path=FileName}" ToolTip="{Binding Path=FullFileName}"/>
+        </Border>
+
+        <Menu Grid.Column="2">
+            <MenuItem Header="...">
+                <MenuItem Header="Import" Command="{Binding Path=ImportCommand}" />
+                <MenuItem Header="Export" Command="{Binding Path=ExportCommand}" />
+                <MenuItem Header="Add from file" Command="{Binding Path=AddFromFileCommand}"/>
+            </MenuItem>
+        </Menu>
     </Grid>
 </UserControl>

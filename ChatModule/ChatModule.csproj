@@ -44,6 +44,8 @@
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Windows.Interactivity, Version=4.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Prism.Wpf.7.2.0.708-pre\lib\net45\System.Windows.Interactivity.dll</HintPath>
     </Reference>
@@ -67,6 +69,10 @@
       <DependentUpon>ChatView.xaml</DependentUpon>
     </Compile>
     <Compile Include="UserInteraction\Chat\ChatViewModel.cs" />
+    <Compile Include="UserInteraction\TransmissionSettingsPanel\TransmissionSettingsPanelView.xaml.cs">
+      <DependentUpon>TransmissionSettingsPanelView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserInteraction\TransmissionSettingsPanel\TransmissionSettingsPanelViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Page Include="UserInteraction\Chat\ChatItem\ChatItemView.xaml">
@@ -76,6 +82,10 @@
     <Page Include="UserInteraction\Chat\ChatView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="UserInteraction\TransmissionSettingsPanel\TransmissionSettingsPanelView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
   <ItemGroup>

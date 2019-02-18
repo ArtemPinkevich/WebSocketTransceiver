@@ -6,6 +6,7 @@
              xmlns:mvvm="http://prismlibrary.com/"
              xmlns:chatItem="clr-namespace:ChatModule.UserInteraction.Chat.ChatItem"
              xmlns:chat="clr-namespace:ChatModule.UserInteraction.Chat"
+             xmlns:transmissionSettingsPanel="clr-namespace:ChatModule.UserInteraction.TransmissionSettingsPanel"
              mvvm:ViewModelLocator.AutoWireViewModel="True"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800"
@@ -13,12 +14,11 @@
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
-        <TextBlock Grid.Row="0" HorizontalAlignment="Center">Chat</TextBlock>
 
-        <Grid Grid.Row="1">
+        <Grid Grid.Row="0">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="Auto"/>
                 <ColumnDefinition Width="*"/>
@@ -30,7 +30,7 @@
             <TextBlock Grid.Column="2" Width="50" Text="Server" TextAlignment="Center" VerticalAlignment="Stretch" Padding="0,5,0,0" Background="#edb537"/>
         </Grid>
         
-        <ListBox ScrollViewer.HorizontalScrollBarVisibility="Disabled" Grid.Row="2" ItemsSource="{Binding Path=Messages}" HorizontalContentAlignment="Stretch">
+        <ListBox Grid.Row="1" ScrollViewer.HorizontalScrollBarVisibility="Disabled" ItemsSource="{Binding Path=Messages}" HorizontalContentAlignment="Stretch">
             <ListBox.ItemContainerStyle>
                 <Style TargetType="ListBoxItem">
                     <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
@@ -42,5 +42,8 @@
                 </DataTemplate>
             </ListBox.ItemTemplate>
         </ListBox>
+
+        <transmissionSettingsPanel:TransmissionSettingsPanelView Grid.Row="2" Margin="4" />
+
     </Grid>
 </UserControl>

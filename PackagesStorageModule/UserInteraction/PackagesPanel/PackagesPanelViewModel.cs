@@ -64,7 +64,7 @@
 
         private void HandlePackageRemovedEvent(Package package)
         {
-            PackagesExplorerItemViewModel packageVm = Packages.FirstOrDefault(o => o.GetPackage().Name == package.Name);
+            PackagesExplorerItemViewModel packageVm = Packages.FirstOrDefault(o => o.GetPackage().Guid == package.Guid);
             Packages.Remove(packageVm);
             if (SelectedPackage == null)
             {

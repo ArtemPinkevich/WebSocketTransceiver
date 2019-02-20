@@ -45,7 +45,7 @@
 
         private void ExecuteRemoveCommand()
         {
-            _eventAggregator.GetEvent<RemovePackageRequest>().Publish(_package.Name);
+            _eventAggregator.GetEvent<RemovePackageRequest>().Publish(_package.Guid);
         }
 
         private void ExecuteSendCommand()

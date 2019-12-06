@@ -19,7 +19,7 @@
         #region Fields
 
         private bool _isTextValid;
-        private readonly Router _router;
+        private readonly IRouter _router;
         private AbonentType _target = AbonentType.Server;
         private string _text;
         private Package _package = new Package("");
@@ -66,7 +66,7 @@
 
         #region Constructors
 
-        public TextEditorViewModel(Router router, IEventAggregator eventAggregator)
+        public TextEditorViewModel(IRouter router, IEventAggregator eventAggregator)
         {
             _router = router;
             _eventAggregator = eventAggregator;

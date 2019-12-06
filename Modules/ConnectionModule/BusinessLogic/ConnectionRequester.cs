@@ -13,10 +13,10 @@
         public event EventHandler OnConnectionBroken;
         public event EventHandler OnConnected;
 
-        private readonly WsClient _wsClient;
+        private readonly IWsClient _wsClient;
         private readonly ISettingsManager _settingsManager;
 
-        public ConnectionRequester(WsClient wsServer, ISettingsManager settingsManager)
+        public ConnectionRequester(IWsClient wsServer, ISettingsManager settingsManager)
         {
             _wsClient = wsServer;
             _settingsManager = settingsManager;

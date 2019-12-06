@@ -10,13 +10,13 @@
 
     public class ConnectionOpener: IConnectionMaker
     {
-        private readonly WsServer _wsServer;
+        private readonly IWsServer _wsServer;
         private readonly ISettingsManager _settingsManager;
 
         public event EventHandler OnConnectionBroken;
         public event EventHandler OnConnected;
 
-        public ConnectionOpener(WsServer wsServer, ISettingsManager settingsManager)
+        public ConnectionOpener(IWsServer wsServer, ISettingsManager settingsManager)
         {
             _wsServer = wsServer;
             _settingsManager = settingsManager;

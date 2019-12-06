@@ -4,7 +4,7 @@
 
     using WebSocketSharp;
 
-    public class WsClient
+    public class WsClient : IWsClient
     {
         #region Fields
 
@@ -42,6 +42,11 @@
             _webSocket?.Send(data);
         }
 
+        public void Disconnect()
+        {
+            _webSocket?.CloseAsync();
+        }
+
         private void FreeWebSocket()
         {
             _webSocket.OnOpen -= HandleWebSocketOnOpen;
@@ -71,11 +76,6 @@
         {
             FreeWebSocket();
             OnClosed?.Invoke(this, EventArgs.Empty);
-        }
-
-        public void Disconnect()
-        {
-            _webSocket?.CloseAsync();
         }
 
         #endregion

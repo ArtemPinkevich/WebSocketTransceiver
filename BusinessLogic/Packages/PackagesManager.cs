@@ -15,7 +15,7 @@
 
     using Settings;
 
-    public class PackagesManager
+    public class PackagesManager : IPackagesManager
     {
         private const string GENERAL_PACKAGES_SETTINGS_FILE_NAME = "settings\\packages\\General.json";
         private const string DEFAULT_PACKAGE_NAME = "Package";
@@ -164,11 +164,6 @@
         private void HandleOnAppClosing()
         {
             SavePackages();
-        }
-
-        public List<Package> GetPackages()
-        {
-            return _packages;
         }
     }
 }

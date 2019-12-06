@@ -4,7 +4,7 @@
 
     using WebSocketSharp.Server;
 
-    public class WsServer
+    public class WsServer : IWsServer
     {
         private WsServerService _wsServerService;
         private WebSocketServer _webSocketServer;

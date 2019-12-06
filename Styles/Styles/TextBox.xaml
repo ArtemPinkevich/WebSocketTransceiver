@@ -16,12 +16,6 @@
         <Setter Property="TextWrapping" Value="Wrap" />
         <Setter Property="AcceptsReturn" Value="True" />
         <Setter Property="AcceptsTab" Value="True" />
-        <Setter Property="BorderThickness" Value="0,2,0,0" />
-        <Setter Property="BorderBrush" Value="Red" />
-        <Style.Triggers>
-            <DataTrigger Binding="{Binding Path=IsTextValid}" Value="True">
-                <Setter Property="BorderBrush" Value="Green" />
-            </DataTrigger>
-        </Style.Triggers>
+        <Setter Property="BorderThickness" Value="0" />
     </Style>
 </ResourceDictionary>

@@ -3,6 +3,7 @@
     using System.Windows;
 
     using BusinessLogic.Packages;
+    using BusinessLogic.Routing;
     using BusinessLogic.Settings;
 
     using ChatModule;
@@ -28,17 +29,18 @@
         protected override Window CreateShell()
         {
             // Заставляем PackagesManager работать
-            Container.Resolve<PackagesManager>();
+            Container.Resolve<IPackagesManager>();
 
             return Container.Resolve<MainView>();
         }
 
         protected override void RegisterTypes(IContainerRegistry containerRegistry)
         {
-            containerRegistry.RegisterSingleton<WsServer>();
-            containerRegistry.RegisterSingleton<WsClient>();
+            containerRegistry.RegisterSingleton<IWsServer, WsServer>();
+            containerRegistry.RegisterSingleton<IWsClient, WsClient>();
+            containerRegistry.RegisterSingleton<IRouter, Router>();
             containerRegistry.RegisterSingleton<ISettingsManager, SettingsManager>();
-            containerRegistry.RegisterSingleton<PackagesManager>();
+            containerRegistry.RegisterSingleton<IPackagesManager, PackagesManager>();
         }
 
         protected override void ConfigureModuleCatalog(IModuleCatalog moduleCatalog)

@@ -13,17 +13,29 @@
              d:DataContext="{d:DesignInstance textEditor:TextEditorViewModel}">
     <UserControl.Resources>
         <ResourceDictionary>
+            <Style x:Key="TextEditorGridSplitter" TargetType="{x:Type GridSplitter}">
+                <Setter Property="Background" Value="Red" />
+                <Style.Triggers>
+                    <DataTrigger Binding="{Binding Path=IsTextValid}" Value="True">
+                        <Setter Property="Background" Value="Green" />
+                    </DataTrigger>
+                </Style.Triggers>
+            </Style>
+            
             <converters:EnumToCollectionConverter x:Key="EnumToCollectionConverter" />
             <converters:EnumToDescriptionConverter x:Key="EnumToDescriptionConverter" />
         
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="/Styles;component/Styles/TextBox.xaml" />
             </ResourceDictionary.MergedDictionaries>
+
         </ResourceDictionary>
+
     </UserControl.Resources>
     
     <Grid>
         <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
             <RowDefinition Height="Auto"/>
@@ -36,8 +48,10 @@
                 </i:EventTrigger>
             </i:Interaction.Triggers>
         </TextBox>
-        
-        <ScrollViewer Grid.Row="1">
+
+        <GridSplitter Grid.Row="1" IsEnabled="False" IsManipulationEnabled="False" Style="{StaticResource TextEditorGridSplitter}" Height="2" HorizontalAlignment="Stretch" />
+
+        <ScrollViewer Grid.Row="2">
             <TextBox Style="{StaticResource JsonEditorTextBox}" Text="{Binding Path=Text, UpdateSourceTrigger=PropertyChanged, Delay=500}">
                 <i:Interaction.Triggers>
                     <i:EventTrigger EventName="LostFocus">
@@ -47,7 +61,7 @@
             </TextBox>
         </ScrollViewer>
 
-        <Grid Grid.Row="2">
+        <Grid Grid.Row="3">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="Auto"/>
                 <ColumnDefinition Width="Auto"/>

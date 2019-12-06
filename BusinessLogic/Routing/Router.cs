@@ -10,15 +10,15 @@
 
     using Prism.Events;
 
-    public class Router
+    public class Router : IRouter
     {
-        private readonly WsClient _wsClient;
-        private readonly WsServer _wsServer;
+        private readonly IWsClient _wsClient;
+        private readonly IWsServer _wsServer;
         private readonly IEventAggregator _eventAggregator;
         private bool _enableRepeaterMode;
         private AbonentType _target = AbonentType.Server;
 
-        public Router(WsServer wsServer, WsClient wsClient, IEventAggregator eventAggregator)
+        public Router(IWsServer wsServer, IWsClient wsClient, IEventAggregator eventAggregator)
         {
             _wsServer = wsServer;
             _wsClient = wsClient;
@@ -30,14 +30,6 @@
             _eventAggregator = eventAggregator;
             _eventAggregator.GetEvent<SwitchRepeaterModeEvent>().Subscribe(HandleSwitchRepeaterModeEvent);
             _eventAggregator.GetEvent<SendPackageRequest>().Subscribe(HandleSendPackageRequest);
-        }
-
-        private void HandleWsServerOnClosed(object sender, System.EventArgs eventArgs)
-        {
-            if (_enableRepeaterMode)
-            {
-                _wsClient.Disconnect();
-            }
         }
 
         public void SetTarget(AbonentType target)
@@ -57,6 +49,14 @@
                     break;
                 default:
                     throw new ArgumentOutOfRangeException(nameof(target), target, null);
+            }
+        }
+
+        private void HandleWsServerOnClosed(object sender, System.EventArgs eventArgs)
+        {
+            if (_enableRepeaterMode)
+            {
+                _wsClient.Disconnect();
             }
         }
 

@@ -4,6 +4,7 @@
     using System.Linq;
     using System.Net;
     using System.Net.Sockets;
+    using System.Text.RegularExpressions;
     using System.Windows.Input;
 
     using BusinessLogic;
@@ -39,7 +40,9 @@
             set => SetProperty(ref _isConnected, value);
         }
 
-        public ICommand ConnectCommand => new DelegateCommand(ExecuteConnectCommand);
+        public ICommand ConnectCommand => new DelegateCommand(ExecuteConnectCommand, CanExecuteConnectCommand)
+            .ObservesProperty(() => Ip)
+            .ObservesProperty(() => Port);
 
         public ConnectionViewModel(IConnectionMaker connectionMaker)
         {
@@ -78,6 +81,14 @@
                 _connectionSettings.Port = _port;
                 _connectionMaker.Connect(_connectionSettings);
             }
+        }
+
+        private bool CanExecuteConnectCommand()
+        {
+            bool isCorrectIp = (Ip != null) && Regex.IsMatch(Ip, @"^\d{1,3}(\.\d{1,3}){3}$");
+            bool isCorrectPort = string.IsNullOrWhiteSpace(Port) || Regex.IsMatch(Port, @"^\d{1,4}$");
+
+            return isCorrectIp && isCorrectPort;
         }
     }
 }

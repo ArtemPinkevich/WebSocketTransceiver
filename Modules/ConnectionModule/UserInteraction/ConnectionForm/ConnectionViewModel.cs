@@ -40,7 +40,7 @@
             set => SetProperty(ref _isConnected, value);
         }
 
-        public ICommand ConnectCommand => new DelegateCommand(ExecuteConnectCommand, CanExecuteConnectCommand)
+        public ICommand ConnectCommand => new DelegateCommand(ExecuteConnectCommand, () => IsValidIpAddress(Ip) && IsValidPort(Port))
             .ObservesProperty(() => Ip)
             .ObservesProperty(() => Port);
 
@@ -83,12 +83,46 @@
             }
         }
 
-        private bool CanExecuteConnectCommand()
-        {
-            bool isCorrectIp = (Ip != null) && Regex.IsMatch(Ip, @"^\d{1,3}(\.\d{1,3}){3}$");
-            bool isCorrectPort = string.IsNullOrWhiteSpace(Port) || Regex.IsMatch(Port, @"^\d{1,4}$");
+        private static bool IsValidIpAddress(string value)
+		{
+            bool isValid = false;
 
-            return isCorrectIp && isCorrectPort;
+            if (!string.IsNullOrWhiteSpace(value))
+            {
+                Match match = Regex.Match(value.Trim(), @"^(\d{1,3})\.(\d{1,3})\.(\d{1,3}).(\d{1,3})$");
+
+                if (match.Success)
+                {
+                    isValid = match.Groups.Cast<Group>()
+                        .Skip(1)
+                        .All(g => int.Parse(g.Value) <= byte.MaxValue);
+                }
+            }
+
+            return isValid;
+        }
+
+        private static bool IsValidPort(string value)
+		{
+            bool isValid = false;
+
+            if (string.IsNullOrWhiteSpace(value))
+            {
+                isValid = true;
+            }
+            else
+            {
+                Match match = Regex.Match(value.Trim(), @"^\d{1,5}$");
+
+                if (match.Success)
+                {
+                    const int maxPortNumber = 65535;
+
+                    isValid = int.Parse(match.Groups[0].Value) <= maxPortNumber;
+                }
+            }
+
+            return isValid;
         }
     }
 }

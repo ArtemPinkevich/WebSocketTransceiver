@@ -4,6 +4,7 @@
     using System.Linq;
     using System.Net;
     using System.Net.Sockets;
+    using System.Text.RegularExpressions;
     using System.Windows.Input;
 
     using BusinessLogic;
@@ -39,7 +40,9 @@
             set => SetProperty(ref _isConnected, value);
         }
 
-        public ICommand ConnectCommand => new DelegateCommand(ExecuteConnectCommand);
+        public ICommand ConnectCommand => new DelegateCommand(ExecuteConnectCommand, () => IsValidIpAddress(Ip) && IsValidPort(Port))
+            .ObservesProperty(() => Ip)
+            .ObservesProperty(() => Port);
 
         public ConnectionViewModel(IConnectionMaker connectionMaker)
         {
@@ -78,6 +81,48 @@
                 _connectionSettings.Port = _port;
                 _connectionMaker.Connect(_connectionSettings);
             }
+        }
+
+        private static bool IsValidIpAddress(string value)
+		{
+            bool isValid = false;
+
+            if (!string.IsNullOrWhiteSpace(value))
+            {
+                Match match = Regex.Match(value.Trim(), @"^(\d{1,3})\.(\d{1,3})\.(\d{1,3}).(\d{1,3})$");
+
+                if (match.Success)
+                {
+                    isValid = match.Groups.Cast<Group>()
+                        .Skip(1)
+                        .All(g => int.Parse(g.Value) <= byte.MaxValue);
+                }
+            }
+
+            return isValid;
+        }
+
+        private static bool IsValidPort(string value)
+		{
+            bool isValid = false;
+
+            if (string.IsNullOrWhiteSpace(value))
+            {
+                isValid = true;
+            }
+            else
+            {
+                Match match = Regex.Match(value.Trim(), @"^\d{1,5}$");
+
+                if (match.Success)
+                {
+                    const int maxPortNumber = 65535;
+
+                    isValid = int.Parse(match.Groups[0].Value) <= maxPortNumber;
+                }
+            }
+
+            return isValid;
         }
     }
 }
